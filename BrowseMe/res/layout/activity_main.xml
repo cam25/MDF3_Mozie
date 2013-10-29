@@ -16,6 +16,7 @@
         android:layout_alignBottom="@+id/editText1"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/editText1"
+        
         android:text="Browse It!" />
 
     <EditText
@@ -31,8 +32,38 @@
             android:id="@+id/webViewer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/editText1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="34dp" />
+            android:layout_below="@+id/button2"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editText1"
+            android:layout_below="@+id/button1"
+            android:background="@drawable/custombutton"
+            android:paddingTop="1dp"
+            android:text="&lt;---" />
+         <Button
+             android:id="@+id/button3"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignBaseline="@+id/button2"
+             android:layout_alignTop="@+id/button2"
+             android:layout_alignBottom="@+id/button2"
+             android:layout_toRightOf="@+id/button2"
+             android:background="@drawable/custombutton"
+             android:paddingTop="1dp"
+             android:text="--->" />
+
+         <Button
+             android:id="@+id/button4"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignRight="@+id/webViewer"
+             android:layout_alignTop="@+id/button3"
+             android:layout_toRightOf="@+id/button3"
+       
+             android:text="History!" />
 
 </RelativeLayout>
