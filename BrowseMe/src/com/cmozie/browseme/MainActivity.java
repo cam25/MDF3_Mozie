@@ -1,6 +1,8 @@
 package com.cmozie.browseme;
 
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,19 +22,42 @@ public class MainActivity extends Activity {
 
 	public EditText website;
 	public static WebView browser;
+	
+	private class myWebViewOnly extends WebViewClient {
+
+		@Override
+		public boolean shouldOverrideUrlLoading(WebView theView, String theURL){
+			
+				
+				if (Uri.parse(theURL).getHost().equals("www.google.com")) {
+					return false;
+					
+				}
+				Intent theIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(theURL));
+				startActivity(theIntent);
+				
+				return true;
+			}
+			
+		
+	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		final WebView browser = (WebView) findViewById(R.id.webViewer);
 		
+		
+		final WebView browser = (WebView) findViewById(R.id.webViewer);
+	
 		WebSettings settings = browser.getSettings();
 		settings.setJavaScriptEnabled(true);
 		browser.addJavascriptInterface(new WebAppInterface(this), "Android");
 		
 		browser.setWebViewClient(new myWebViewOnly());
-		browser.loadUrl("http://www.bing.com");
+		
+		
+		
 		Button search = (Button) findViewById(R.id.browseButn);
 		Button back = (Button) findViewById(R.id.backButn);
 		Button forward = (Button) findViewById(R.id.forwardButn);
@@ -52,7 +77,7 @@ public class MainActivity extends Activity {
 					String url = website.getText().toString();
 					browser.loadUrl(url);
 					Log.i("url", url);
-					
+					website.setText("");
 					
 				}
 			});
@@ -109,24 +134,7 @@ public class MainActivity extends Activity {
 		}
 	
 	//class for my intent. 
-	private class myWebViewOnly extends WebViewClient {
-
-		@Override
-		public boolean shouldOverrideUrlLoading(WebView theView, String theURL){
-			
-				
-				if (Uri.parse(theURL).getHost().equals("http://www.google.com")) {
-					return false;
-					
-				}
-				Intent theIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(theURL));
-				startActivity(theIntent);
-				
-				return true;
-			}
-			
-		
-	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
