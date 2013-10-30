@@ -46,7 +46,9 @@
             android:layout_alignLeft="@+id/editText1"
             android:layout_below="@+id/browseButn"
             android:paddingTop="1dp"
-            android:text="&lt;---" />
+            android:drawableLeft="@drawable/matchback"
+            android:text="B"
+             />
          <Button
              android:id="@+id/forwardButn"
              android:layout_width="wrap_content"
@@ -56,7 +58,8 @@
              android:layout_alignBottom="@+id/backButn"
              android:layout_toRightOf="@+id/backButn"
              android:paddingTop="1dp"
-             android:text="--->" />
+             android:drawableLeft="@drawable/forwardarrow"
+             android:text="F" />
 
          <Button
              android:id="@+id/historyButn"
@@ -76,6 +79,7 @@
              android:layout_alignLeft="@+id/webViewer"
              android:layout_alignParentBottom="true"
              android:paddingTop="1dp"
-             android:text="refresh" />
+             android:drawableLeft="@drawable/refresh"
+             android:text="R" />
 
 </RelativeLayout>

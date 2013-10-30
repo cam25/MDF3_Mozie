@@ -28,13 +28,8 @@ public class MainActivity extends Activity {
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView theView, String theURL){
 			
-				
-				if (Uri.parse(theURL).getHost().equals("www.google.com")) {
-					return false;
-					
-				}
-				Intent theIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(theURL));
-				startActivity(theIntent);
+				//sets the view to load the url input
+				theView.loadUrl(theURL);
 				
 				return true;
 			}
@@ -102,6 +97,7 @@ public class MainActivity extends Activity {
 					
 					//gets url and passes to browser
 					String url = website.getText().toString();
+					
 					browser.loadUrl(url);
 					Log.i("url", url);
 					website.setText("");
