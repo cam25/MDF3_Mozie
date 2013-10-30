@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity" 
+    >
 
     <Button
         android:id="@+id/browseButn"
@@ -55,6 +56,17 @@
              android:background="@drawable/custombutton"
              android:paddingTop="1dp"
              android:text="--->" />
+         
+         <Button
+             android:id="@+id/refreshButn"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+       
+             android:layout_alignBottom="@+id/webViewer"
+            
+             android:background="@drawable/custombutton"
+             android:paddingTop="1dp"
+             android:text="refresh" />
 
          <Button
              android:id="@+id/historyButn"
@@ -63,7 +75,9 @@
              android:layout_alignRight="@+id/webViewer"
              android:layout_alignTop="@+id/forwardButn"
              android:layout_toRightOf="@+id/forwardButn"
-       
-             android:text="History!" />
+             
+      		 android:background="@drawable/custombutton"
+      		 android:paddingTop="1dp"
+             android:text="History" />
 
 </RelativeLayout>
