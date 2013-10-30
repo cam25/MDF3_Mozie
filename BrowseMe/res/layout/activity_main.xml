@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/browseButn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/editText1"
@@ -32,37 +32,37 @@
             android:id="@+id/webViewer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/button2"
+            android:layout_below="@+id/backButn"
             android:layout_centerHorizontal="true" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/backButn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/editText1"
-            android:layout_below="@+id/button1"
+            android:layout_below="@+id/browseButn"
             android:background="@drawable/custombutton"
             android:paddingTop="1dp"
             android:text="&lt;---" />
          <Button
-             android:id="@+id/button3"
+             android:id="@+id/forwardButn"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_alignBaseline="@+id/button2"
-             android:layout_alignTop="@+id/button2"
-             android:layout_alignBottom="@+id/button2"
-             android:layout_toRightOf="@+id/button2"
+             android:layout_alignBaseline="@+id/backButn"
+             android:layout_alignTop="@+id/backButn"
+             android:layout_alignBottom="@+id/backButn"
+             android:layout_toRightOf="@+id/backButn"
              android:background="@drawable/custombutton"
              android:paddingTop="1dp"
              android:text="--->" />
 
          <Button
-             android:id="@+id/button4"
+             android:id="@+id/historyButn"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_alignRight="@+id/webViewer"
-             android:layout_alignTop="@+id/button3"
-             android:layout_toRightOf="@+id/button3"
+             android:layout_alignTop="@+id/forwardButn"
+             android:layout_toRightOf="@+id/forwardButn"
        
              android:text="History!" />
 
