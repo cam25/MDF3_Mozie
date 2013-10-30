@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 
 	public EditText website;
 	public static WebView browser;
-	
+	URL actualURL = null;
 	private class myWebViewOnly extends WebViewClient {
 
 		@Override
@@ -46,12 +46,39 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//setting intent to getIntent
+		Intent intent = getIntent();
 		
+		//getting the data inthe intent
+		Uri fireBrowserURI = intent.getData();
+		
+		//scheme
+		Log.i("scheme", fireBrowserURI.getScheme());
+		//host
+		Log.i("host", fireBrowserURI.getHost());
+		//path
+		Log.i("path", fireBrowserURI.getPath());
+		try {				
+			//combines the uri parts to a whole url string
+			 actualURL = new URL(fireBrowserURI.getScheme(),
+					 		fireBrowserURI.getHost(),
+					 		fireBrowserURI.getPath());
+			 				Log.i("URL = ", actualURL.toString());
+			 				
+			 				
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+			
 		
 		final WebView browser = (WebView) findViewById(R.id.webViewer);
-	
+		//passing url from intent to broswer/webview here
+		browser.loadUrl(actualURL.toString());
 		WebSettings settings = browser.getSettings();
 		settings.setJavaScriptEnabled(true);
+		
 		browser.addJavascriptInterface(new WebAppInterface(this), "Android");
 		
 		browser.setWebViewClient(new myWebViewOnly());
@@ -133,7 +160,7 @@ public class MainActivity extends Activity {
 			
 		}
 	
-	//class for my intent. 
+
 	
 
 	@Override
