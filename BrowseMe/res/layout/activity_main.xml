@@ -13,14 +13,14 @@
         android:id="@+id/browseButn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText1"
         android:layout_alignBottom="@+id/editText1"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/editText1"
-       
-        android:paddingTop="1dp"
-        android:paddingBottom=".1dp"
-        android:text="Browse It!" />
+        android:drawableLeft="@drawable/ic_launcher"
+        android:paddingBottom="3dp"
+        android:paddingTop="8dp"
+        android:text="Browse" />
 
     <EditText
         android:id="@+id/editText1"
@@ -36,9 +36,10 @@
             android:id="@+id/webViewer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/refreshButn"
-            android:layout_below="@+id/backButn"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/backButn" />
 
         <Button
             android:id="@+id/backButn"
@@ -82,14 +83,16 @@
              android:paddingTop="1dp"
              android:drawableLeft="@drawable/refresh"
              android:text="R" />
-         <Spinner 
-	 	    android:id="@+id/historyList"
-	 	   	android:layout_width="wrap_content"
-	 	    android:layout_height="wrap_content"
-	 	  android:layout_alignRight="@+id/webViewer"
+
+         <Spinner
+             android:id="@+id/historyList"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
              android:layout_alignParentBottom="true"
-	 	    android:visibility="invisible"
-	 	    android:paddingTop="10dp"/>
+             android:layout_alignRight="@+id/webViewer"
+             android:layout_alignTop="@+id/refreshButn"
+             android:paddingTop="10dp"
+             android:visibility="invisible" />
 
          <Button
              android:id="@+id/clear"
