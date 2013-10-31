@@ -8,11 +8,9 @@
  * date				Oct 31, 2013
  */
 package com.cmozie.browseme;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
@@ -128,7 +126,7 @@ public class MainActivity extends Activity {
 		browser.setWebViewClient(new myWebViewOnly());
 	
 		
-		//elements
+		//UI elements
 		Button search = (Button) findViewById(R.id.browseButn);
 		final Button back = (Button) findViewById(R.id.backButn);
 		Button forward = (Button) findViewById(R.id.forwardButn);
