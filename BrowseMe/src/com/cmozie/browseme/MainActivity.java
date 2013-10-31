@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 public class MainActivity extends Activity {
 
@@ -31,6 +32,9 @@ public class MainActivity extends Activity {
 	public ArrayList<String> arrayList1;
 	public Spinner historySpinner;
 	public static ArrayAdapter<String> adapter;
+	public static Button back;
+	public StringBuilder text;
+	public static Button history;
 	private class myWebViewOnly extends WebViewClient {
 
 		@Override
@@ -38,10 +42,15 @@ public class MainActivity extends Activity {
 			
 				//sets the view to load the url input
 				theView.loadUrl(theURL);
+				//historySpinner = (Spinner) findViewById(R.id.historyList);
+				//arrayList1.add(theURL);
+				//adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_dropdown_item_1line,arrayList1);
+				//Log.i("test", arrayList1.toString());
+				//historySpinner.setAdapter(adapter);
 				
 				return true;
 			}
-			
+		
 		
 	}
 	@Override
@@ -49,6 +58,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		
+	
 		//setting intent to getIntent
 		Intent intent = getIntent();
 		
@@ -96,11 +107,10 @@ public class MainActivity extends Activity {
 		
 		//elements
 		Button search = (Button) findViewById(R.id.browseButn);
-		Button back = (Button) findViewById(R.id.backButn);
+		final Button back = (Button) findViewById(R.id.backButn);
 		Button forward = (Button) findViewById(R.id.forwardButn);
-		Button history = (Button) findViewById(R.id.historyButn);
+		history = (Button) findViewById(R.id.historyButn);
 		Button refresh = (Button) findViewById(R.id.refreshButn);
-		historySpinner = (Spinner) findViewById(R.id.historyList);
 		Button clear = (Button) findViewById(R.id.clear);
 		
 		
@@ -124,7 +134,7 @@ public class MainActivity extends Activity {
 					imm.hideSoftInputFromWindow(website.getWindowToken(), 0);
 					
 					//string builder appending http:// to beginning of url 
-					StringBuilder text = new StringBuilder();
+					text = new StringBuilder();
 					text = new StringBuilder(url);
 					text.insert(0, "http://");
 					 
@@ -149,6 +159,7 @@ public class MainActivity extends Activity {
 					// TODO Auto-generated method stub
 					if (browser.canGoBack()) {
 						
+						Log.i("text", text.toString());
 						//back
 						browser.goBack();
 					}
@@ -176,7 +187,7 @@ public class MainActivity extends Activity {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					historySpinner.setVisibility(View.VISIBLE);
+				
 				
 				}
 			});
