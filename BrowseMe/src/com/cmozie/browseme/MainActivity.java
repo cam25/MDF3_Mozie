@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 	public static ArrayAdapter<String> adapter;
 	public static Button back;
 	public StringBuilder text;
-	public static Button history;
+	public static Button sendMail;
 	private class myWebViewOnly extends WebViewClient {
 
 		@Override
@@ -109,7 +109,7 @@ public class MainActivity extends Activity {
 		Button search = (Button) findViewById(R.id.browseButn);
 		final Button back = (Button) findViewById(R.id.backButn);
 		Button forward = (Button) findViewById(R.id.forwardButn);
-		history = (Button) findViewById(R.id.historyButn);
+		sendMail = (Button) findViewById(R.id.emailButn);
 		Button refresh = (Button) findViewById(R.id.refreshButn);
 		Button clear = (Button) findViewById(R.id.clear);
 		
@@ -159,7 +159,6 @@ public class MainActivity extends Activity {
 					// TODO Auto-generated method stub
 					if (browser.canGoBack()) {
 						
-						Log.i("text", text.toString());
 						//back
 						browser.goBack();
 					}
@@ -182,13 +181,17 @@ public class MainActivity extends Activity {
 			});
 		
 		
-			history.setOnClickListener(new OnClickListener() {
+			sendMail.setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-				
-				
+					
+					//send an email
+					Intent emailIntent = new Intent(Intent.ACTION_SEND);
+					//specifies mail clients only
+					emailIntent.setType("message/rfc822");
+					startActivity(Intent.createChooser(emailIntent, "Choose an Email Account"));
 				}
 			});
 			

@@ -39,7 +39,6 @@ public class MainActivity extends Activity {
 					 webSite = urlString.getText().toString();
 					Log.i("website", webSite);
 					
-					//stringbuilder - inserting http://to beginning of url to allow the user to use www.
 					 text = new StringBuilder(webSite); 
 					 text.insert(0, "http://");
 					 

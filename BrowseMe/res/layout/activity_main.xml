@@ -64,15 +64,16 @@
              android:text="F" />
 
          <Button
-             android:id="@+id/historyButn"
+             android:id="@+id/emailButn"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_alignRight="@+id/webViewer"
              android:layout_alignTop="@+id/forwardButn"
              android:layout_toRightOf="@+id/forwardButn"
-             
+             android:drawableLeft="@drawable/emailicon"
       		 android:paddingTop="1dp"
-             android:text="History" />
+      		 
+             android:text="Send Email" />
 
          <Button
              android:id="@+id/refreshButn"
