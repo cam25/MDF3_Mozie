@@ -20,7 +20,7 @@
         android:drawableLeft="@drawable/ic_launcher"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"
-        android:text="Browse" />
+        android:text="@string/browse" />
 
     <EditText
         android:id="@+id/editText1"
@@ -49,7 +49,7 @@
             android:layout_below="@+id/browseButn"
             android:paddingTop="1dp"
             android:drawableLeft="@drawable/backarrow"
-            android:text="B"
+            android:text="@string/b"
              />
          <Button
              android:id="@+id/forwardButn"
@@ -61,7 +61,7 @@
              android:layout_toRightOf="@+id/backButn"
              android:paddingTop="1dp"
              android:drawableLeft="@drawable/rightarrow"
-             android:text="F" />
+             android:text="@string/f" />
 
          <Button
              android:id="@+id/emailButn"
@@ -73,7 +73,7 @@
              android:drawableLeft="@drawable/emailicon"
       		 android:paddingTop="1dp"
       		 
-             android:text="Send Email" />
+             android:text="@string/send_email" />
 
          <Button
              android:id="@+id/refreshButn"
@@ -83,24 +83,14 @@
              android:layout_alignParentBottom="true"
              android:paddingTop="1dp"
              android:drawableLeft="@drawable/refresh"
-             android:text="R" />
-
-         <Spinner
-             android:id="@+id/historyList"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentBottom="true"
-             android:layout_alignRight="@+id/webViewer"
-             android:layout_alignTop="@+id/refreshButn"
-             android:paddingTop="10dp"
-             android:visibility="invisible" />
+             android:text="@string/r" />
 
          <Button
              android:id="@+id/clear"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_alignRight="@+id/historyList"
+             android:layout_alignRight="@+id/emailButn"
              android:layout_alignTop="@+id/refreshButn"
-             android:text="Clear" />
+             android:text="@string/clear" />
 
 </RelativeLayout>

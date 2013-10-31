@@ -6,5 +6,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="http_www_">http://www.</string>
     <string name="go_">Go!</string>
+    <string name="browse">Browse</string>
+    <string name="b">B</string>
+    <string name="f">F</string>
+    <string name="send_email">Send Email</string>
+    <string name="r">R</string>
+    <string name="clear">Clear</string>
 
 </resources>

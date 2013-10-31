@@ -1,12 +1,21 @@
+/*
+ * project 			BrowseMe
+ * 
+ * package			com.cmozie.browseme
+ * 
+ * name				cameronmozie
+ * 
+ * date				Oct 31, 2013
+ */
 package com.cmozie.browseme;
 
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -22,8 +31,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainActivity.
+ */
 public class MainActivity extends Activity {
 
 	public EditText website;
@@ -35,8 +47,15 @@ public class MainActivity extends Activity {
 	public static Button back;
 	public StringBuilder text;
 	public static Button sendMail;
+	
+	/**
+	 * The Class myWebViewOnly.
+	 */
 	private class myWebViewOnly extends WebViewClient {
 
+		/* (non-Javadoc)
+		 * @see android.webkit.WebViewClient#shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String)
+		 */
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView theView, String theURL){
 			
@@ -53,11 +72,15 @@ public class MainActivity extends Activity {
 		
 		
 	}
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
 		
 	
 		//setting intent to getIntent
@@ -99,7 +122,7 @@ public class MainActivity extends Activity {
 		settings.setUseWideViewPort(true);
 		
 		//enables javascript to be used in browser
-		browser.addJavascriptInterface(new WebAppInterface(this), "Android");
+		settings.setJavaScriptEnabled(true);
 		
 		//sets my webView to handled upon searches inside the webview
 		browser.setWebViewClient(new myWebViewOnly());
@@ -221,6 +244,9 @@ public class MainActivity extends Activity {
 
 		
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
