@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
 	public String webSite;
 	public EditText urlString;
 	Context context;
+	public StringBuilder text;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,24 +28,25 @@ public class MainActivity extends Activity {
 		
 		Button search = (Button) findViewById(R.id.searchButn);
 		 urlString = (EditText) findViewById(R.id.editText1);
-		
 
-		 //String url = "http://www.nike.com";
-		// urlString.setText(url);
-		 
-		
-		 
 		search.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				try {
+					
 					 webSite = urlString.getText().toString();
 					Log.i("website", webSite);
 					
+					//stringbuilder - inserting http://to beginning of url to allow the user to use www.
+					 text = new StringBuilder(webSite); 
+					 text.insert(0, "http://");
+					 
+					 Log.i("test", text.toString());
+					
 					if (urlString.length() > 1) {
-						Intent theIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(webSite));
+						Intent theIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(text.toString()));
 						startActivity(theIntent);
 					}
 					

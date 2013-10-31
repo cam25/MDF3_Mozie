@@ -11,18 +11,8 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int sysBlack=0x7f040000;
-        public static final int sysBlue=0x7f040001;
-        public static final int sysCyan=0x7f040002;
-        public static final int sysDkGray=0x7f040003;
-        public static final int sysGray=0x7f040004;
-        public static final int sysGreen=0x7f040005;
-        public static final int sysLtGray=0x7f040006;
-        public static final int sysMagenta=0x7f040007;
-        public static final int sysRed=0x7f040008;
-        public static final int sysTransparent=0x7f040009;
-        public static final int sysWhite=0x7f04000a;
-        public static final int sysYellow=0x7f04000b;
+        public static final int sysTransparent=0x7f040000;
+        public static final int sysWhite=0x7f040001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -41,15 +31,18 @@ public final class R {
         public static final int ic_launcher=0x7f020003;
         public static final int matchback=0x7f020004;
         public static final int refresh=0x7f020005;
-        public static final int texture=0x7f020006;
+        public static final int rightarrow=0x7f020006;
+        public static final int texture=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f090007;
+        public static final int action_settings=0x7f090009;
         public static final int backButn=0x7f090004;
         public static final int browseButn=0x7f090000;
+        public static final int clear=0x7f090008;
         public static final int editText1=0x7f090001;
         public static final int forwardButn=0x7f090005;
         public static final int historyButn=0x7f090006;
+        public static final int historyList=0x7f090007;
         public static final int refreshButn=0x7f090003;
         public static final int webViewer=0x7f090002;
     }

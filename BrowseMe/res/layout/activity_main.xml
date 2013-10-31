@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:textColor="@color/sysWhite"
         android:ems="10"
         android:hint="@string/http_www_" />
 
@@ -46,7 +47,7 @@
             android:layout_alignLeft="@+id/editText1"
             android:layout_below="@+id/browseButn"
             android:paddingTop="1dp"
-            android:drawableLeft="@drawable/matchback"
+            android:drawableLeft="@drawable/backarrow"
             android:text="B"
              />
          <Button
@@ -58,7 +59,7 @@
              android:layout_alignBottom="@+id/backButn"
              android:layout_toRightOf="@+id/backButn"
              android:paddingTop="1dp"
-             android:drawableLeft="@drawable/forwardarrow"
+             android:drawableLeft="@drawable/rightarrow"
              android:text="F" />
 
          <Button
@@ -81,5 +82,21 @@
              android:paddingTop="1dp"
              android:drawableLeft="@drawable/refresh"
              android:text="R" />
+         <Spinner 
+	 	    android:id="@+id/historyList"
+	 	   	android:layout_width="wrap_content"
+	 	    android:layout_height="wrap_content"
+	 	  android:layout_alignRight="@+id/webViewer"
+             android:layout_alignParentBottom="true"
+	 	    android:visibility="invisible"
+	 	    android:paddingTop="10dp"/>
+
+         <Button
+             android:id="@+id/clear"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignRight="@+id/historyList"
+             android:layout_alignTop="@+id/refreshButn"
+             android:text="Clear" />
 
 </RelativeLayout>
