@@ -186,7 +186,16 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		Log.i("Surface", "Created");
 		
 		try {
+			if (theCamera == null) {
+				Log.i("Null", "Camera");
+			}
 			theCamera.setPreviewDisplay(surface);
+			
+			if (surface == null) {
+				Log.i("Null", "surface");
+			}else if (surface !=null) {
+				Log.i("Not", "Null");
+			}
 			theCamera.startPreview();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -223,12 +232,12 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		try {
 			
 			
-			Camera openCam = Camera.open();
-			if (openCam != null) {
+			theCamera = Camera.open();
+			if (theCamera != null) {
 				Log.i("Cam", "Not null");
 			}
-			Camera.Parameters parameters = openCam.getParameters();
-			openCam.lock();
+			Camera.Parameters parameters = theCamera.getParameters();
+			theCamera.lock();
 			Log.i("Cam", parameters.toString());
 			surface = theView.getHolder();
 			Log.i("holder", surface.toString());
