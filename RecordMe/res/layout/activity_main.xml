@@ -11,8 +11,8 @@
 
     <VideoView
         android:id="@+id/videoView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="142dp" />
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/playButn"
-        android:layout_toLeftOf="@+id/stopButn"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>

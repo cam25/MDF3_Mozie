@@ -3,13 +3,17 @@ package com.cmozie.recordme;
 import java.io.File;
 import java.io.IOException;
 
+
+
 import android.media.CamcorderProfile;
+import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.media.MediaRecorder.OnInfoListener;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.drm.DrmErrorEvent;
 import android.drm.DrmManagerClient;
@@ -22,6 +26,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.MediaController;
 import android.widget.VideoView;
 
 public class MainActivity extends Activity implements SurfaceHolder.Callback, OnInfoListener,OnErrorListener {
@@ -35,7 +40,9 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	public MediaRecorder mediaR;
 	public String videoFile;
 	public ImageButton record;
-	Context context;
+	public Context context;
+	public Button save;
+	public MediaPlayer mp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,10 +50,11 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		
 		 startRecorder = (ImageButton) findViewById(R.id.openRecorder);
 		 record = (ImageButton) findViewById(R.id.recordButn);
-		// playVid = (Button) findViewById(R.id.playButn);
+		 playVid = (ImageButton) findViewById(R.id.playButn);
 		 stopRecord = (ImageButton) findViewById(R.id.stopButn);
 		 theView = (VideoView) this.findViewById(R.id.videoView1);
-		 
+		
+		context = this;
 		
 		
 		 //Camera.open();
@@ -60,7 +68,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 					Log.i("Not", "Null");
 				}
 				videoFile = Environment.getExternalStorageDirectory() + "/videoFile.mp4";
-				
+				Log.i("fileLoc", videoFile);
 				File overwriteFile = new File(videoFile);
 				
 				if (overwriteFile.exists()) {
@@ -86,16 +94,18 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				mediaR.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 				mediaR.setMaxDuration(7000);
 				mediaR.setPreviewDisplay(surface.getSurface());
-				mediaR.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
+
 				
 				mediaR.setOutputFile(videoFile);
 				mediaR.prepare();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+				playVid.setEnabled(true);
+				record.setEnabled(true);
 			}
 		});
+	
 		
 		record.setOnClickListener(new OnClickListener() {
 			
@@ -104,10 +114,24 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				// TODO Auto-generated method stub
 				mediaR.start();
 				
+				startRecorder.setEnabled(false);
+				stopRecord.setEnabled(true);
+				record.setEnabled(false);
+			
+			}
+		});
+		playVid.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				
+				Intent infoIntent = new Intent(context,VideoPlayback.class);
+				startActivity(infoIntent);
 				
 			}
 		});
-		
 	
 		
 		stopRecord.setOnClickListener(new OnClickListener() {
@@ -115,10 +139,17 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				mediaR.stop();
+				try {
+					mediaR.stop();
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				releaseCam();
 				releaseRecord();
+				startRecorder.setEnabled(true);
 			}
+			
 	});
 			
 
@@ -220,7 +251,9 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		Log.i("resume", "on");
 		super.onResume();
 		//if camera is open
-		
+	playVid.setEnabled(false);
+	record.setEnabled(false);
+	stopRecord.setEnabled(false);
 		if (!startRecorder()) {
 			Log.i("Recorder","Open");
 			finish();
