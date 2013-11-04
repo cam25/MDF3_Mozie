@@ -78,6 +78,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				mediaR = new MediaRecorder();	
 				
 				theCamera.stopPreview();
+				theCamera.setDisplayOrientation(90);
 				theCamera.unlock();
 				
 				

@@ -6,8 +6,11 @@ import com.cmozie.recordme.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -19,9 +22,19 @@ public class VideoPlayback extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.video);
 		
-		
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setContentView(R.layout.video);
+		context = this;
+		theView = (VideoView) findViewById(R.id.videoView1);
+		path = "/storage/emulated/0/videoFile.mp4";
+
+		theView.setVideoPath(path);
+		theView.setMediaController(new MediaController(context));
+		theView.start();
 	}
 	
 
