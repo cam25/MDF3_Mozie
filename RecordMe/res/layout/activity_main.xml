@@ -26,15 +26,6 @@
         android:layout_toRightOf="@+id/playButn"
         android:src="@drawable/stop" android:contentDescription="@string/todo"/>
 
-    <Button
-        android:id="@+id/openRecorder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/playButn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="14dp"
-        android:text="Open Recorder" />
-
     <ImageButton
         android:id="@+id/recordButn"
         android:layout_width="wrap_content"
@@ -53,5 +44,13 @@
         android:layout_marginBottom="19dp"
         android:contentDescription="@string/todo"
         android:src="@drawable/play" />
+
+    <ImageButton
+        android:id="@+id/openRecorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/playButn"
+        android:layout_toLeftOf="@+id/stopButn"
+        android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>

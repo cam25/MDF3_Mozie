@@ -28,9 +28,9 @@ public final class R {
     }
     public static final class id {
         public static final int action_settings=0x7f080005;
-        public static final int openRecorder=0x7f080003;
+        public static final int openRecorder=0x7f080004;
         public static final int playButn=0x7f080002;
-        public static final int recordButn=0x7f080004;
+        public static final int recordButn=0x7f080003;
         public static final int stopButn=0x7f080001;
         public static final int videoView1=0x7f080000;
     }
