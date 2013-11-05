@@ -48,7 +48,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	public Button save;
 	public MediaPlayer mp;
 	static final int NOTIFICATION_ID = 1;
-	NotificationManager notif;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,7 +59,6 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		 playVid = (ImageButton) findViewById(R.id.playButn);
 		 stopRecord = (ImageButton) findViewById(R.id.stopButn);
 		 theView = (VideoView) this.findViewById(R.id.videoView1);
-		 notif = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		
 		context = this;
 	
@@ -105,7 +104,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				mediaR.setVideoSource(MediaRecorder.VideoSource.CAMERA);
 				mediaR.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
 				mediaR.setVideoSize(176, 144);
-				mediaR.setVideoFrameRate(15);
+				mediaR.setVideoFrameRate(30);
 				//setting the video encodertype as well as audio
 				mediaR.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
 				mediaR.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
@@ -133,9 +132,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			
 			@Override
 			public void onClick(View v) {
-				
-				
-				mediaR.start();
+			mediaR.start();
 				
 				startRecorder.setEnabled(false);
 				stopRecord.setEnabled(true);
@@ -165,12 +162,14 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				// TODO Auto-generated method stub
 				try {
 					mediaR.stop();
+					mediaR.reset();
 				} catch (IllegalStateException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				releaseCam();
 				releaseRecord();
+				releaseCam();
+				
 				startRecorder.setEnabled(true);
 			}
 			
@@ -201,6 +200,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				Log.i("Error", "Here");
 			}
 			theCamera.release();
 			theCamera = null;
@@ -254,6 +254,8 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			theCamera.startPreview();
 		} catch (Exception e) {
 			// TODO: handle exception
+			theCamera.release();
+			theCamera = null;
 			e.printStackTrace();
 			Log.i("Error", "Couldnt Start");
 		}
@@ -262,17 +264,17 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	@Override
 	public void surfaceDestroyed(SurfaceHolder surface) {
 		// TODO Auto-generated method stub
-		theCamera.stopPreview();
-        theCamera.setPreviewCallback(null);
-        theCamera.release();
-        theCamera = null;
-		
+	
 	}
 
 	@Override
 	public void onError(DrmManagerClient client, DrmErrorEvent event) {
 		// TODO Auto-generated method stub
 		
+		
+	}
+	protected void onPause() {
+		super.onPause();
 		
 	}
 	protected void onResume() {
@@ -295,9 +297,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			startRecorder.setEnabled(true);
 			
 			theCamera = Camera.open();
-			if (theCamera != null) {
-				Log.i("Cam", "Not null");
-			}
+			
 			Camera.Parameters parameters = theCamera.getParameters();
 			theCamera.lock();
 			Log.i("Cam", parameters.toString());
