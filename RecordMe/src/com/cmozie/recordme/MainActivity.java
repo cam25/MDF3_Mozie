@@ -60,7 +60,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		 stopRecord = (ImageButton) findViewById(R.id.stopButn);
 		 theView = (VideoView) this.findViewById(R.id.videoView1);
 		 notif = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-		 notif.cancel(NOTIFICATION_ID);
+		
 		context = this;
 	
 		 //Camera.open();
@@ -133,26 +133,8 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			
 			@Override
 			public void onClick(View v) {
-				Intent theIntent = new Intent(context,MainActivity.class);
-				PendingIntent  pI = PendingIntent.getActivity(context, 0, theIntent, 0);
-				String message = "Video file is saved to storage";
-				String title = "Video!";
-				Notification notifier = new Notification(R.drawable.ic_launcher,message,System.currentTimeMillis());
-				notifier.setLatestEventInfo(context, title, message, pI);
 				
-				notifier.defaults = Notification.DEFAULT_ALL;
-				notif.notify(NOTIFICATION_ID,notifier);
-				finish();
-				/*notifyDevice.flags = Notification.FLAG_SHOW_LIGHTS;
-				notifyDevice.ledARGB = 0xFFff0000;
-				notifyDevice.ledOnMS = 100;
-				notifyDevice.ledOffMS = 100;
-				notifier.notify(NOTIFICATION_ID, notifyDevice);*/
 				
-				//notifyDevice.defaults = Notification.DEFAULT_VIBRATE;
-				//notifier.notify(NOTIFICATION_ID,notifyDevice);
-				
-				// TODO Auto-generated method stub
 				mediaR.start();
 				
 				startRecorder.setEnabled(false);
@@ -280,6 +262,10 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	@Override
 	public void surfaceDestroyed(SurfaceHolder surface) {
 		// TODO Auto-generated method stub
+		theCamera.stopPreview();
+        theCamera.setPreviewCallback(null);
+        theCamera.release();
+        theCamera = null;
 		
 	}
 
