@@ -30,18 +30,7 @@
         android:background="@color/sysTransparent"
         android:contentDescription="@string/todo"
         android:src="@drawable/play" />
-
-    <ImageButton
-        android:id="@+id/openRecorder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/playButn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="33dp"
-        android:contentDescription="TODO"
-        android:src="@drawable/ic_launcher"
-        android:text="Open" />
-
+    
     <ImageButton
         android:id="@+id/stopButn"
         android:layout_width="wrap_content"
@@ -56,14 +45,32 @@
         android:src="@drawable/stop" />
 
     <ImageButton
+        android:id="@+id/infoButn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/playButn"
+        android:layout_alignParentBottom="true"
+        android:background="@color/sysTransparent"
+        android:contentDescription="TODO"
+        android:src="@drawable/info" />
+
+    <ImageButton
         android:id="@+id/recordButn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignBottom="@+id/infoButn"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
         android:background="@color/sysTransparent"
         android:contentDescription="@string/todo"
         android:src="@drawable/record" />
+
+    <Button
+        android:id="@+id/openRecorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/recordButn"
+        android:layout_centerHorizontal="true"
+        android:drawableTop="@drawable/ic_launcher"
+        android:text="Click here" />
 
 </RelativeLayout>

@@ -12,10 +12,12 @@ import android.media.MediaRecorder.OnInfoListener;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.drm.DrmErrorEvent;
@@ -23,6 +25,7 @@ import android.drm.DrmManagerClient;
 import android.drm.DrmManagerClient.OnErrorListener;
 import android.hardware.Camera;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat.Builder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.SurfaceHolder;
@@ -35,7 +38,7 @@ import android.widget.VideoView;
 
 public class MainActivity extends Activity implements SurfaceHolder.Callback, OnInfoListener,OnErrorListener {
 
-	public ImageButton startRecorder;
+	public Button startRecorder;
 	public ImageButton playVid;
 	public ImageButton stopRecord;
 	public VideoView theView;
@@ -47,6 +50,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	public Context context;
 	public Button save;
 	public MediaPlayer mp;
+	public ImageButton info;
 	static final int NOTIFICATION_ID = 1;
 	
 	
@@ -56,12 +60,12 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		 startRecorder = (ImageButton) findViewById(R.id.openRecorder);
+		 startRecorder = (Button) findViewById(R.id.openRecorder);
 		 record = (ImageButton) findViewById(R.id.recordButn);
 		 playVid = (ImageButton) findViewById(R.id.playButn);
 		 stopRecord = (ImageButton) findViewById(R.id.stopButn);
 		 theView = (VideoView) this.findViewById(R.id.videoView1);
-		
+		 info = (ImageButton) findViewById(R.id.infoButn);
 		context = this;
 	
 		 //Camera.open();
@@ -134,12 +138,16 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			
 			@Override
 			public void onClick(View v) {
-			mediaR.start();
-			 	NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 				Notification notification = new Notification();
-				notification.defaults = Notification.DEFAULT_VIBRATE;
-				nm.notify(NOTIFICATION_ID, notification);
+				NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 				
+				NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context).
+						setSmallIcon(R.drawable.ic_launcher).setContentTitle("RecordMe").setContentText("video stored: " + videoFile);
+				
+				notification = notificationBuilder.build();
+				nm.notify(NOTIFICATION_ID, notification);
+						
+				mediaR.start();
 				startRecorder.setEnabled(false);
 				stopRecord.setEnabled(true);
 				record.setEnabled(false);
@@ -181,7 +189,28 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			
 	});
 			
+		info.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				AlertDialog.Builder alert = new AlertDialog.Builder(context);
+				alert.setTitle("How it Works");
+				alert.setMessage("Click the camera button to initialize the camera. Next click the record button to start recording. After recording, click stop and then play! Thats it!");
+				alert.setCancelable(false);
+				alert.setPositiveButton("Thanks", new DialogInterface.OnClickListener() {
+				
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
 
+						dialog.cancel();
+					}
+				});
+				alert.show();
+				
+			}
+		});
 		
 		
 	}
