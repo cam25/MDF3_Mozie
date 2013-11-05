@@ -49,6 +49,8 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	public MediaPlayer mp;
 	static final int NOTIFICATION_ID = 1;
 	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -133,6 +135,10 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			@Override
 			public void onClick(View v) {
 			mediaR.start();
+			 	NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+				Notification notification = new Notification();
+				notification.defaults = Notification.DEFAULT_VIBRATE;
+				nm.notify(NOTIFICATION_ID, notification);
 				
 				startRecorder.setEnabled(false);
 				stopRecord.setEnabled(true);
@@ -273,10 +279,29 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		
 		
 	}
-	protected void onPause() {
-		super.onPause();
+	protected void onDestroy() {
+		super.onDestroy();
+		if (!destroyed()) {
+			finish();
+		}
 		
 	}
+	private boolean destroyed() {
+		// TODO Auto-generated method stub
+		
+		try {
+			
+			theCamera.release();
+			theCamera = null;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return false;
+		}
+		return true;
+	}
+
+
 	protected void onResume() {
 		Log.i("resume", "on");
 		super.onResume();
