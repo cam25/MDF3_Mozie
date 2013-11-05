@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity" 
+    android:background="@color/sysDkGray">
 
     <VideoView
         android:id="@+id/videoView1"
@@ -18,30 +19,14 @@
         android:layout_marginBottom="142dp" />
 
     <ImageButton
-        android:id="@+id/stopButn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/playButn"
-        android:layout_marginLeft="63dp"
-        android:layout_toRightOf="@+id/playButn"
-        android:src="@drawable/stop" android:contentDescription="@string/todo"/>
-
-    <ImageButton
-        android:id="@+id/recordButn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/videoView1"
-        android:layout_alignTop="@+id/playButn"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/record" />
-
-    <ImageButton
         android:id="@+id/playButn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp"
+        android:layout_alignBottom="@+id/stopButn"
+        android:layout_alignLeft="@+id/videoView1"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/recordButn"
+        android:background="@color/sysTransparent"
         android:contentDescription="@string/todo"
         android:src="@drawable/play" />
 
@@ -49,8 +34,35 @@
         android:id="@+id/openRecorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/playButn"
+        android:layout_alignBottom="@+id/playButn"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_launcher" />
+        android:layout_marginBottom="33dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/ic_launcher"
+        android:text="Open" />
+
+    <ImageButton
+        android:id="@+id/stopButn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/videoView1"
+        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/openRecorder"
+        android:background="@color/sysTransparent"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/stop" />
+
+    <ImageButton
+        android:id="@+id/recordButn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:background="@color/sysTransparent"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/record" />
 
 </RelativeLayout>

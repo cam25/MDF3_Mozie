@@ -12,6 +12,9 @@ import android.media.MediaRecorder.OnInfoListener;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,6 +22,7 @@ import android.drm.DrmErrorEvent;
 import android.drm.DrmManagerClient;
 import android.drm.DrmManagerClient.OnErrorListener;
 import android.hardware.Camera;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.SurfaceHolder;
@@ -43,6 +47,8 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	public Context context;
 	public Button save;
 	public MediaPlayer mp;
+	static final int NOTIFICATION_ID = 1;
+	NotificationManager notif;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,10 +59,10 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		 playVid = (ImageButton) findViewById(R.id.playButn);
 		 stopRecord = (ImageButton) findViewById(R.id.stopButn);
 		 theView = (VideoView) this.findViewById(R.id.videoView1);
-		
+		 notif = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		 notif.cancel(NOTIFICATION_ID);
 		context = this;
-		
-		
+	
 		 //Camera.open();
 		
 		startRecorder.setOnClickListener(new OnClickListener() {
@@ -67,43 +73,58 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				if (mediaR != null) {
 					Log.i("Not", "Null");
 				}
+				
+				//set videoFile string to the value of the directory + the filename and filetype
 				videoFile = Environment.getExternalStorageDirectory() + "/videoFile.mp4";
 				Log.i("fileLoc", videoFile);
+				
+				//replaces current file 
 				File overwriteFile = new File(videoFile);
 				
 				if (overwriteFile.exists()) {
-					Log.i("File Exists", "Overwrite?");
+					Log.i("File", "Exists");
+					overwriteFile.delete();
 				}
 				try {
+					
+				//initializing MediaRecorder	
 				mediaR = new MediaRecorder();	
 				
+				//when initializing the recorder stop the surface preview
 				theCamera.stopPreview();
+				
+				//sets the display of the camera to 90 which turns camera to right side up for portrait recording
 				theCamera.setDisplayOrientation(90);
 				theCamera.unlock();
 				
-				
+				//sets the media recorder to utilize the camera
 				mediaR.setCamera(theCamera);
 				
-				//audio source
+				//A/V source
 				mediaR.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
 				mediaR.setVideoSource(MediaRecorder.VideoSource.CAMERA);
 				mediaR.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
 				mediaR.setVideoSize(176, 144);
 				mediaR.setVideoFrameRate(15);
-				
+				//setting the video encodertype as well as audio
 				mediaR.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
 				mediaR.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-				mediaR.setMaxDuration(7000);
+				//set time period of recording to 1min
+				mediaR.setMaxDuration(60000);
+				
+				//setting the preview display to the SurfaceHolder
 				mediaR.setPreviewDisplay(surface.getSurface());
 
-				
+				//setting the output file to the file type of my videoFile
 				mediaR.setOutputFile(videoFile);
 				mediaR.prepare();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				playVid.setEnabled(true);
+				//toggling buttons
+				playVid.setEnabled(false);
 				record.setEnabled(true);
+				startRecorder.setEnabled(true);
 			}
 		});
 	
@@ -112,12 +133,32 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			
 			@Override
 			public void onClick(View v) {
+				Intent theIntent = new Intent(context,MainActivity.class);
+				PendingIntent  pI = PendingIntent.getActivity(context, 0, theIntent, 0);
+				String message = "Video file is saved to storage";
+				String title = "Video!";
+				Notification notifier = new Notification(R.drawable.ic_launcher,message,System.currentTimeMillis());
+				notifier.setLatestEventInfo(context, title, message, pI);
+				
+				notifier.defaults = Notification.DEFAULT_ALL;
+				notif.notify(NOTIFICATION_ID,notifier);
+				finish();
+				/*notifyDevice.flags = Notification.FLAG_SHOW_LIGHTS;
+				notifyDevice.ledARGB = 0xFFff0000;
+				notifyDevice.ledOnMS = 100;
+				notifyDevice.ledOffMS = 100;
+				notifier.notify(NOTIFICATION_ID, notifyDevice);*/
+				
+				//notifyDevice.defaults = Notification.DEFAULT_VIBRATE;
+				//notifier.notify(NOTIFICATION_ID,notifyDevice);
+				
 				// TODO Auto-generated method stub
 				mediaR.start();
 				
 				startRecorder.setEnabled(false);
 				stopRecord.setEnabled(true);
 				record.setEnabled(false);
+				playVid.setEnabled(true);
 			
 			}
 		});
@@ -252,6 +293,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		Log.i("resume", "on");
 		super.onResume();
 		//if camera is open
+		
 	playVid.setEnabled(false);
 	record.setEnabled(false);
 	stopRecord.setEnabled(false);
@@ -264,7 +306,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	private boolean startRecorder() {
 		
 		try {
-			
+			startRecorder.setEnabled(true);
 			
 			theCamera = Camera.open();
 			if (theCamera != null) {
