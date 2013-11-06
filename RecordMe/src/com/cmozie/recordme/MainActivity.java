@@ -124,6 +124,18 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				
 				//setting the preview display to the SurfaceHolder
 				mediaR.setPreviewDisplay(surface.getSurface());
+				
+				//alerts the user that the max duration for recording has been reached.
+				mediaR.setOnInfoListener(new MediaRecorder.OnInfoListener() {
+
+				    public void onInfo(MediaRecorder mr, int what, int extra) {
+				    // TODO Auto-generated method stub
+
+				    if(what== MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED)
+				    	 Toast.makeText(context, "Recording Time limit reached..", Toast.LENGTH_SHORT).show();
+				    	
+				    }
+				});
 
 				//setting the output file to the file type of my videoFile
 				mediaR.setOutputFile(videoFile);
@@ -144,6 +156,8 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			
 			@Override
 			public void onClick(View v) {
+				
+				//notification that the video has been stored
 				Notification notification = new Notification();
 				NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 				
@@ -152,10 +166,15 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				
 				notification = notificationBuilder.build();
 				nm.notify(NOTIFICATION_ID, notification);
-						
+				
+				
+				//starts recording		
 				mediaR.start();
+				//sets message visible
 				rMessage.setVisibility(View.VISIBLE);
 				rMessage.setText("RECORDING...");
+				
+				//button toggle
 				startRecorder.setEnabled(false);
 				stopRecord.setEnabled(true);
 				record.setEnabled(false);
@@ -316,7 +335,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	@Override
 	public void surfaceDestroyed(SurfaceHolder surface) {
 		// TODO Auto-generated method stub
-	
+		
 	}
 
 	@Override
@@ -342,6 +361,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			return false;
 		}
 		return true;
