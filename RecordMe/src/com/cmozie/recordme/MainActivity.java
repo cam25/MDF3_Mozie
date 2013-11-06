@@ -32,8 +32,11 @@ import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.MediaController;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 public class MainActivity extends Activity implements SurfaceHolder.Callback, OnInfoListener,OnErrorListener {
@@ -51,6 +54,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	public Button save;
 	public MediaPlayer mp;
 	public ImageButton info;
+	public TextView rMessage;
 	static final int NOTIFICATION_ID = 1;
 	
 	
@@ -66,7 +70,8 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		 stopRecord = (ImageButton) findViewById(R.id.stopButn);
 		 theView = (VideoView) this.findViewById(R.id.videoView1);
 		 info = (ImageButton) findViewById(R.id.infoButn);
-		context = this;
+		 rMessage = (TextView) findViewById(R.id.recording);
+		 context = this;
 	
 		 //Camera.open();
 		
@@ -115,7 +120,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				mediaR.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
 				mediaR.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 				//set time period of recording to 1min
-				mediaR.setMaxDuration(60000);
+				mediaR.setMaxDuration(7000);
 				
 				//setting the preview display to the SurfaceHolder
 				mediaR.setPreviewDisplay(surface.getSurface());
@@ -130,6 +135,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				playVid.setEnabled(false);
 				record.setEnabled(true);
 				startRecorder.setEnabled(true);
+				rMessage.setVisibility(View.GONE);
 			}
 		});
 	
@@ -148,6 +154,8 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				nm.notify(NOTIFICATION_ID, notification);
 						
 				mediaR.start();
+				rMessage.setVisibility(View.VISIBLE);
+				rMessage.setText("RECORDING...");
 				startRecorder.setEnabled(false);
 				stopRecord.setEnabled(true);
 				record.setEnabled(false);
@@ -164,6 +172,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				
 				Intent infoIntent = new Intent(context,VideoPlayback.class);
 				startActivity(infoIntent);
+				rMessage.setVisibility(View.GONE);
 				
 			}
 		});
@@ -174,9 +183,14 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				
+				mediaR.setOnInfoListener(null);
+				mediaR.setOnErrorListener(null);
 				try {
+					
 					mediaR.stop();
 					mediaR.reset();
+					rMessage.setVisibility(View.GONE);
 				} catch (IllegalStateException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -260,7 +274,10 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	@Override
 	public void onInfo(MediaRecorder mr, int what, int extra) {
 		// TODO Auto-generated method stub
-		
+		if (what == MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED) {
+	         Toast.makeText(context, "Time limit reached. Video recording is stopped now.", Toast.LENGTH_SHORT).show();
+	         mediaR.stop();
+		}
 	}
 
 	@Override

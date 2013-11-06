@@ -73,4 +73,14 @@
         android:drawableTop="@drawable/ic_launcher"
         android:text="Click here" />
 
+    <TextView
+        android:id="@+id/recording"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/videoView1"
+        android:layout_alignRight="@+id/videoView1"
+        android:layout_toRightOf="@+id/recordButn"
+        android:textColor="@color/sysRed"
+        android:visibility="invisible" />
+
 </RelativeLayout>
