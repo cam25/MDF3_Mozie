@@ -1,10 +1,16 @@
+/*
+ * project 			RecordMe
+ * 
+ * package			com.cmozie.recordme
+ * 
+ * name				cameronmozie
+ * 
+ * date				Nov 7, 2013
+ */
 package com.cmozie.recordme;
 
 import java.io.File;
 import java.io.IOException;
-
-
-
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.media.MediaRecorder.OnInfoListener;
@@ -33,6 +39,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainActivity.
+ */
 public class MainActivity extends Activity implements SurfaceHolder.Callback, OnInfoListener,OnErrorListener {
 
 	public Button startRecorder;
@@ -53,6 +63,9 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	
 	
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -167,12 +180,19 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onPause()
+	 */
 	public void onPause(){
 		releaseRecord();
 		releaseCam();
 		super.onPause();
 		
 	}
+	
+	/**
+	 * Release cam.
+	 */
 	private void releaseCam() {
 		// TODO Auto-generated method stub
 		if (theCamera!= null) {
@@ -188,6 +208,9 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		}
 	}
 
+	/**
+	 * Release record.
+	 */
 	private void releaseRecord() {
 		// TODO Auto-generated method stub
 		if (mediaR != null) {
@@ -196,6 +219,9 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		}
 	}
 
+	/**
+	 * Initialize.
+	 */
 	public void initialize(){
 		
 		
@@ -268,6 +294,9 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		rMessage.setVisibility(View.GONE);
 	}
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -275,6 +304,9 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.media.MediaRecorder.OnInfoListener#onInfo(android.media.MediaRecorder, int, int)
+	 */
 	@Override
 	public void onInfo(MediaRecorder mr, int what, int extra) {
 		// TODO Auto-generated method stub
@@ -284,6 +316,9 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.SurfaceHolder.Callback#surfaceChanged(android.view.SurfaceHolder, int, int, int)
+	 */
 	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
@@ -291,6 +326,9 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.SurfaceHolder.Callback#surfaceCreated(android.view.SurfaceHolder)
+	 */
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		// TODO Auto-generated method stub
@@ -317,6 +355,9 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.SurfaceHolder.Callback#surfaceDestroyed(android.view.SurfaceHolder)
+	 */
 	@Override
 	public void surfaceDestroyed(SurfaceHolder surface) {
 		// TODO Auto-generated method stub
@@ -324,15 +365,19 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		releaseRecord();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.drm.DrmManagerClient.OnErrorListener#onError(android.drm.DrmManagerClient, android.drm.DrmErrorEvent)
+	 */
 	@Override
 	public void onError(DrmManagerClient client, DrmErrorEvent event) {
 		// TODO Auto-generated method stub
 		
 		
 	}
-	
 
-
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 */
 	protected void onResume() {
 		Log.i("resume", "on");
 		super.onResume();
@@ -345,6 +390,11 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		}
 	}
 
+	/**
+	 * Start recorder.
+	 *
+	 * @return true, if successful
+	 */
 	@SuppressWarnings("deprecation")
 	private boolean startRecorder() {
 		
