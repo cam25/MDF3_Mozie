@@ -12,17 +12,10 @@ public final class R {
     }
     public static final class color {
         public static final int sysBlack=0x7f040000;
-        public static final int sysBlue=0x7f040001;
-        public static final int sysCyan=0x7f040002;
-        public static final int sysDkGray=0x7f040003;
-        public static final int sysGray=0x7f040004;
-        public static final int sysGreen=0x7f040005;
-        public static final int sysLtGray=0x7f040006;
-        public static final int sysMagenta=0x7f040007;
-        public static final int sysRed=0x7f040008;
-        public static final int sysTransparent=0x7f040009;
-        public static final int sysWhite=0x7f04000a;
-        public static final int sysYellow=0x7f04000b;
+        public static final int sysDkGray=0x7f040001;
+        public static final int sysRed=0x7f040002;
+        public static final int sysTransparent=0x7f040003;
+        public static final int sysWhite=0x7f040004;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 

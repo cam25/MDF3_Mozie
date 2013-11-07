@@ -5,7 +5,6 @@ import java.io.IOException;
 
 
 
-import android.media.CamcorderProfile;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.media.MediaRecorder.OnInfoListener;
@@ -15,27 +14,21 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.drm.DrmErrorEvent;
 import android.drm.DrmManagerClient;
 import android.drm.DrmManagerClient.OnErrorListener;
 import android.hardware.Camera;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationCompat.Builder;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -101,6 +94,8 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				rMessage.setVisibility(View.VISIBLE);
 				rMessage.setText("RECORDING...");
 				playVid.setEnabled(false);
+				stopRecord.setEnabled(true);
+				
 				//button toggle
 				
 			
@@ -154,7 +149,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				
 				AlertDialog.Builder alert = new AlertDialog.Builder(context);
 				alert.setTitle("How it Works");
-				alert.setMessage("Click the camera button to initialize the camera. Next click the record button to start recording. After recording, click stop and then play! Thats it!");
+				alert.setMessage("Click Record, Stop the record and play the video. Thats it! Enjoy");
 				alert.setCancelable(false);
 				alert.setPositiveButton("Thanks", new DialogInterface.OnClickListener() {
 				
@@ -245,7 +240,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		mediaR.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
 		mediaR.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 		//set time period of recording to 1min
-		mediaR.setMaxDuration(7000);
+		mediaR.setMaxDuration(60000);
 		
 		//setting the preview display to the SurfaceHolder
 		mediaR.setPreviewDisplay(surface.getSurface());
@@ -335,28 +330,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		
 		
 	}
-	protected void onDestroy() {
-		super.onDestroy();
-		if (!destroyed()) {
-			finish();
-		}
-		
-	}
-	private boolean destroyed() {
-		// TODO Auto-generated method stub
-		
-		try {
-			
-			theCamera.release();
-			theCamera = null;
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return false;
-		}
-		return true;
-	}
+	
 
 
 	protected void onResume() {
@@ -371,18 +345,18 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private boolean startRecorder() {
 		
 		try {
-			
-			
-			
+			//instantiates a new instance of the media recorder
 			if (mediaR == null) {
 				mediaR = new MediaRecorder();
 			}
 		
 			
 			theCamera = Camera.open();
+			//instantiates a new instance of the camera if its null
 			if (theCamera == null) {
 				theCamera= Camera.open();
 				
@@ -395,7 +369,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			Log.i("holder", surface.toString());
 			surface.addCallback(this);
 			surface.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-			
+			stopRecord.setEnabled(false);
 			} catch (Exception e) {
 
 				e.printStackTrace();
