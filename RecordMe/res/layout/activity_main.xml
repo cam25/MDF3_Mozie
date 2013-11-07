@@ -39,7 +39,7 @@
         android:layout_alignRight="@+id/videoView1"
         android:layout_marginBottom="48dp"
         android:layout_marginLeft="18dp"
-        android:layout_toRightOf="@+id/openRecorder"
+        android:layout_toRightOf="@+id/recordButn"
         android:background="@color/sysTransparent"
         android:contentDescription="@string/todo"
         android:src="@drawable/stop" />
@@ -54,24 +54,7 @@
         android:contentDescription="TODO"
         android:src="@drawable/info" />
 
-    <ImageButton
-        android:id="@+id/recordButn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/infoButn"
-        android:layout_centerHorizontal="true"
-        android:background="@color/sysTransparent"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/record" />
-
-    <Button
-        android:id="@+id/openRecorder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/recordButn"
-        android:layout_centerHorizontal="true"
-        android:drawableTop="@drawable/ic_launcher"
-        android:text="Click here" />
+   
 
     <TextView
         android:id="@+id/recording"
@@ -82,5 +65,15 @@
         android:layout_toRightOf="@+id/recordButn"
         android:textColor="@color/sysRed"
         android:visibility="invisible" />
+
+    <ImageButton
+        android:id="@+id/recordButn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/stopButn"
+        android:layout_centerHorizontal="true"
+        android:background="@color/sysTransparent"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/record" />
 
 </RelativeLayout>

@@ -27,6 +27,7 @@ import android.hardware.Camera;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.SurfaceHolder;
 import android.view.View;
@@ -64,7 +65,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		 startRecorder = (Button) findViewById(R.id.openRecorder);
+		
 		 record = (ImageButton) findViewById(R.id.recordButn);
 		 playVid = (ImageButton) findViewById(R.id.playButn);
 		 stopRecord = (ImageButton) findViewById(R.id.stopButn);
@@ -73,90 +74,14 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		 rMessage = (TextView) findViewById(R.id.recording);
 		 context = this;
 	
-		 //Camera.open();
 		
-		startRecorder.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if (mediaR != null) {
-					Log.i("Not", "Null");
-				}
-				
-				//set videoFile string to the value of the directory + the filename and filetype
-				videoFile = Environment.getExternalStorageDirectory() + "/videoFile.mp4";
-				Log.i("fileLoc", videoFile);
-				
-				//replaces current file 
-				File overwriteFile = new File(videoFile);
-				
-				if (overwriteFile.exists()) {
-					Log.i("File", "Exists");
-					overwriteFile.delete();
-				}
-				try {
-					
-				//initializing MediaRecorder	
-				mediaR = new MediaRecorder();	
-				
-				//when initializing the recorder stop the surface preview
-				theCamera.stopPreview();
-				
-				//sets the display of the camera to 90 which turns camera to right side up for portrait recording
-				theCamera.setDisplayOrientation(90);
-				theCamera.unlock();
-				
-				//sets the media recorder to utilize the camera
-				mediaR.setCamera(theCamera);
-				
-				//A/V source
-				mediaR.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
-				mediaR.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-				mediaR.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-				mediaR.setVideoSize(176, 144);
-				mediaR.setVideoFrameRate(30);
-				//setting the video encodertype as well as audio
-				mediaR.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
-				mediaR.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-				//set time period of recording to 1min
-				mediaR.setMaxDuration(7000);
-				
-				//setting the preview display to the SurfaceHolder
-				mediaR.setPreviewDisplay(surface.getSurface());
-				
-				//alerts the user that the max duration for recording has been reached.
-				mediaR.setOnInfoListener(new MediaRecorder.OnInfoListener() {
-
-				    public void onInfo(MediaRecorder mr, int what, int extra) {
-				    // TODO Auto-generated method stub
-
-				    if(what== MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED)
-				    	 Toast.makeText(context, "Recording Time limit reached..", Toast.LENGTH_SHORT).show();
-				    	
-				    }
-				});
-
-				//setting the output file to the file type of my videoFile
-				mediaR.setOutputFile(videoFile);
-				mediaR.prepare();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				//toggling buttons
-				playVid.setEnabled(false);
-				record.setEnabled(true);
-				startRecorder.setEnabled(true);
-				rMessage.setVisibility(View.GONE);
-			}
-		});
 	
 		
 		record.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				
+				initialize();
 				//notification that the video has been stored
 				Notification notification = new Notification();
 				NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
@@ -167,18 +92,17 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				notification = notificationBuilder.build();
 				nm.notify(NOTIFICATION_ID, notification);
 				
-				
+				if (mediaR == null) {
+					mediaR = new MediaRecorder();	
+				}
 				//starts recording		
 				mediaR.start();
 				//sets message visible
 				rMessage.setVisibility(View.VISIBLE);
 				rMessage.setText("RECORDING...");
-				
+				playVid.setEnabled(false);
 				//button toggle
-				startRecorder.setEnabled(false);
-				stopRecord.setEnabled(true);
-				record.setEnabled(false);
-				playVid.setEnabled(true);
+				
 			
 			}
 		});
@@ -217,7 +141,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				releaseRecord();
 				releaseCam();
 				
-				startRecorder.setEnabled(true);
+				playVid.setEnabled(true);
 			}
 			
 	});
@@ -248,17 +172,11 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		
 	}
 	
-	
-	private boolean checkCameraHardware(Context context) {
-	    if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
-	        // this device has a camera
-	    	Log.i("Has", "camera");
-	        return true;
-	    } else {
-	        // no camera on this device
-	    	Log.i("No", "camera");
-	        return false;
-	    }
+	public void onPause(){
+		releaseRecord();
+		releaseCam();
+		super.onPause();
+		
 	}
 	private void releaseCam() {
 		// TODO Auto-generated method stub
@@ -279,10 +197,82 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		// TODO Auto-generated method stub
 		if (mediaR != null) {
 			mediaR.release();
-			mediaR = null;
+			
 		}
 	}
 
+	public void initialize(){
+		
+		
+		//set videoFile string to the value of the directory + the filename and filetype
+		videoFile = Environment.getExternalStorageDirectory() + "/videoFile.mp4";
+		Log.i("fileLoc", videoFile);
+		
+		//replaces current file 
+		File overwriteFile = new File(videoFile);
+		
+		if (overwriteFile.exists()) {
+			Log.i("File", "Exists");
+			overwriteFile.delete();
+		}
+		try {
+			
+		//initializing MediaRecorder	
+		mediaR = new MediaRecorder();	
+		if (mediaR == null) {
+			mediaR = new MediaRecorder();	
+		}
+		//when initializing the recorder stop the surface preview
+		if (theCamera == null) {
+			theCamera = Camera.open();
+		}
+		theCamera.stopPreview();
+		
+		//sets the display of the camera to 90 which turns camera to right side up for portrait recording
+		theCamera.setDisplayOrientation(90);
+		theCamera.unlock();
+		
+		//sets the media recorder to utilize the camera
+		mediaR.setCamera(theCamera);
+		
+		//A/V source
+		mediaR.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
+		mediaR.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+		mediaR.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+		mediaR.setVideoSize(176, 144);
+		mediaR.setVideoFrameRate(30);
+		//setting the video encodertype as well as audio
+		mediaR.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
+		mediaR.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+		//set time period of recording to 1min
+		mediaR.setMaxDuration(7000);
+		
+		//setting the preview display to the SurfaceHolder
+		mediaR.setPreviewDisplay(surface.getSurface());
+		
+		//alerts the user that the max duration for recording has been reached.
+		mediaR.setOnInfoListener(new MediaRecorder.OnInfoListener() {
+
+		    public void onInfo(MediaRecorder mr, int what, int extra) {
+		    // TODO Auto-generated method stub
+
+		    if(what== MediaRecorder.MEDIA_RECORDER_INFO_MAX_DURATION_REACHED)
+		    	 Toast.makeText(context, "Recording Time limit reached..", Toast.LENGTH_SHORT).show();
+		    	
+		    }
+		});
+
+		//setting the output file to the file type of my videoFile
+		mediaR.setOutputFile(videoFile);
+		mediaR.prepare();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//toggling buttons
+	
+		rMessage.setVisibility(View.GONE);
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -335,7 +325,8 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	@Override
 	public void surfaceDestroyed(SurfaceHolder surface) {
 		// TODO Auto-generated method stub
-		
+		releaseCam();
+		releaseRecord();
 	}
 
 	@Override
@@ -373,9 +364,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		super.onResume();
 		//if camera is open
 		
-	playVid.setEnabled(false);
-	record.setEnabled(false);
-	stopRecord.setEnabled(false);
+
 		if (!startRecorder()) {
 			Log.i("Recorder","Open");
 			finish();
@@ -385,9 +374,19 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	private boolean startRecorder() {
 		
 		try {
-			startRecorder.setEnabled(true);
+			
+			
+			
+			if (mediaR == null) {
+				mediaR = new MediaRecorder();
+			}
+		
 			
 			theCamera = Camera.open();
+			if (theCamera == null) {
+				theCamera= Camera.open();
+				
+			}
 			
 			Camera.Parameters parameters = theCamera.getParameters();
 			theCamera.lock();
@@ -396,6 +395,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			Log.i("holder", surface.toString());
 			surface.addCallback(this);
 			surface.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+			
 			} catch (Exception e) {
 
 				e.printStackTrace();
