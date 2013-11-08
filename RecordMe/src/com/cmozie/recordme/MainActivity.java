@@ -61,8 +61,6 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 	public TextView rMessage;
 	static final int NOTIFICATION_ID = 1;
 	
-	
-	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -150,6 +148,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				releaseCam();
 				
 				playVid.setEnabled(true);
+				stopRecord.setEnabled(false);
 			}
 			
 	});
@@ -229,13 +228,16 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 		videoFile = Environment.getExternalStorageDirectory() + "/videoFile.mp4";
 		Log.i("fileLoc", videoFile);
 		
-		//replaces current file 
+		
 		File overwriteFile = new File(videoFile);
+		//replaces current file 
 		
 		if (overwriteFile.exists()) {
 			Log.i("File", "Exists");
 			overwriteFile.delete();
 		}
+		
+		
 		try {
 			
 		//initializing MediaRecorder	
