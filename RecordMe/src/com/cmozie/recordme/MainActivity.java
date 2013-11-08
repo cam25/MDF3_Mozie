@@ -88,7 +88,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 			@Override
 			public void onClick(View v) {
 				initialize();
-				//notification that the video has been stored
+				//notification that the video has been stored and showing where its stored for easy access.
 				Notification notification = new Notification();
 				NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
 				
@@ -339,7 +339,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, On
 				Log.i("Null", "Camera");
 			}
 			theCamera.setPreviewDisplay(surface);
-			
+			theCamera.setDisplayOrientation(90);
 			if (surface == null) {
 				Log.i("Null", "surface");
 			}else if (surface !=null) {
