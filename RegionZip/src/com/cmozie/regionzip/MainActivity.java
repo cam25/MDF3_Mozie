@@ -3,6 +3,7 @@ package com.cmozie.regionzip;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 import org.json.JSONArray;
@@ -111,7 +112,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		
 		setContentView(R.layout.form);
 		listview = (ListView) this.findViewById(R.id.list);
-	
+	listview.setTextFilterEnabled(true);
 		
 		View listHeader = this.getLayoutInflater().inflate(R.layout.list_header, null);
 		listview.addHeaderView(listHeader);
@@ -676,23 +677,43 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		
 		//creates a search view for the widget
 		 sv = (SearchView) MenuItemCompat.getActionView(search);
-		sm = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-		sv.setSearchableInfo(sm.getSearchableInfo(getComponentName()));
 		System.out.println("Test: "+sv);
+		
+		//calls search method passing in the menu item
+		doSearch(search);
 		return super.onCreateOptionsMenu(menu);
 	}
+	private void doSearch(MenuItem searchItem) {
+
+ 
+       sm = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        if (sm != null) {
+   
+            SearchableInfo info = sm.getSearchableInfo(getComponentName());
+            
+            sv.setSearchableInfo(info);
+        }
+ 
+        sv.setOnQueryTextListener(this);
+    }
 
 	@Override
 	public boolean onQueryTextChange(String newText) {
 		// TODO Auto-generated method stub
-		
+		Log.i("CHANGE", newText);
+		//filters the listview with the text entered in search query
+		adapter.getFilter().filter(newText);
 		return false;
 	}
 
 	@Override
 	public boolean onQueryTextSubmit(String query) {
 		// TODO Auto-generated method stub
+		Log.i("SUBMIT", query);
+		
 		return false;
 	}
+	
+	
 
 }
