@@ -8,7 +8,7 @@
     <string name="searchButn">Search</string>
     <string name="enter_zipcode_here">Enter Zipcode Here</string>
     <string name="search">Search</string>
-    <string name="popular_zipcodes">Click here for locations</string>
+    <string name="popular_zipcodes">US Regions(State Only)</string>
     <string name="zipcode_banner">Zipcode Banner</string>
     <string name="areacode_">Areacode:</string>
     <string name="city_">City:</string>
@@ -32,7 +32,7 @@
     <string name="timezone_2_">Timezone 2:</string>
     <string name="zipcodes_">Zipcodes:</string>
     <string name="region">Region</string>
-    <string name="search_all_regions">Search All Regions</string>
+    <string name="search_all_regions">All US Regions Info</string>
     <string name="title_activity_info">InfoActivity</string>
     <string name="county">county</string>
     <string name="longitude">Longitude</string>
@@ -40,5 +40,6 @@
     <string name="timezone">Timezone</string>
     <string name="areacodes">AreaCodes</string>
     <string name="zipcodes">Zipcodes</string>
+    <string name="Search"></string>
 
 </resources>

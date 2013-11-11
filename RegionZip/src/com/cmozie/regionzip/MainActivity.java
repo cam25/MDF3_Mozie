@@ -4,11 +4,14 @@ package com.cmozie.regionzip;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.SearchManager;
+import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,8 +23,11 @@ import android.os.Message;
 import android.os.Messenger;
 
 
+import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -30,6 +36,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -46,7 +53,7 @@ import webConnections.*;
  */
 
 @SuppressLint("HandlerLeak")
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SearchView.OnQueryTextListener {
 
 	//--public statics
 	public static Context _context;
@@ -69,6 +76,8 @@ public class MainActivity extends Activity {
 	Boolean _connected = false;
 	public static SimpleAdapter adapter;
 	public static Cursor cursor;
+	public static SearchView sv;
+	public static SearchManager sm; 
 	
 
 	//strings
@@ -612,7 +621,6 @@ public class MainActivity extends Activity {
 	  
 	  }
 	}
-	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onSaveInstanceState(android.os.Bundle)
 	 */
@@ -656,7 +664,6 @@ public class MainActivity extends Activity {
 	   Log.i("Bundle",savedInstanceState.toString());
 	  
 	 }
-
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
@@ -664,9 +671,28 @@ public class MainActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+		//sets the menu item 
+		MenuItem search = (MenuItem) menu.findItem(R.id.search);
+		
+		//creates a search view for the widget
+		 sv = (SearchView) MenuItemCompat.getActionView(search);
+		sm = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+		sv.setSearchableInfo(sm.getSearchableInfo(getComponentName()));
+		System.out.println("Test: "+sv);
+		return super.onCreateOptionsMenu(menu);
 	}
-	
-	
-	
+
+	@Override
+	public boolean onQueryTextChange(String newText) {
+		// TODO Auto-generated method stub
+		
+		return false;
+	}
+
+	@Override
+	public boolean onQueryTextSubmit(String query) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
