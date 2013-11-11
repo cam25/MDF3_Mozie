@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">RegionZip</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">About</string>
     <string name="hello_world">Hello world!</string>
     <string name="textFieldText">Enter Zipcode Here</string>
     <string name="searchButn">Search</string>
@@ -41,5 +41,6 @@
     <string name="areacodes">AreaCodes</string>
     <string name="zipcodes">Zipcodes</string>
     <string name="Search"></string>
+    <string name="my_names_cameron_mozie_and_i_am_a_student_at_full_sail_university_i_currently_reside_in_landover_md_and_am_looking_to_graduate_fall_2014_">My names Cameron Mozie and I am a student at Full Sail University. I currently reside in Landover MD, and am looking to graduate Fall 2014.</string>
 
 </resources>

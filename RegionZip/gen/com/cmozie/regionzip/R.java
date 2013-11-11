@@ -43,34 +43,36 @@ public final class R {
         public static final int zipcodebanner=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f090013;
+        public static final int aboutPage=0x7f090014;
+        public static final int aboutText=0x7f090001;
         public static final int banner=0x7f090000;
-        public static final int favList=0x7f090003;
-        public static final int getHistory=0x7f090001;
-        public static final int list=0x7f090004;
-        public static final int list2=0x7f090005;
-        public static final int location1_header=0x7f090006;
-        public static final int location1_header2=0x7f090009;
-        public static final int location2_header=0x7f090007;
-        public static final int location2_header2=0x7f09000a;
-        public static final int location3_header=0x7f090008;
-        public static final int location3_header2=0x7f09000b;
-        public static final int popularZipcodes=0x7f090002;
-        public static final int row1=0x7f09000c;
-        public static final int row1_2=0x7f09000f;
-        public static final int row2=0x7f09000d;
-        public static final int row2_2=0x7f090010;
-        public static final int row3=0x7f09000e;
-        public static final int row3_2=0x7f090011;
-        public static final int search=0x7f090012;
+        public static final int favList=0x7f090004;
+        public static final int getHistory=0x7f090002;
+        public static final int list=0x7f090005;
+        public static final int list2=0x7f090006;
+        public static final int location1_header=0x7f090007;
+        public static final int location1_header2=0x7f09000a;
+        public static final int location2_header=0x7f090008;
+        public static final int location2_header2=0x7f09000b;
+        public static final int location3_header=0x7f090009;
+        public static final int location3_header2=0x7f09000c;
+        public static final int popularZipcodes=0x7f090003;
+        public static final int row1=0x7f09000d;
+        public static final int row1_2=0x7f090010;
+        public static final int row2=0x7f09000e;
+        public static final int row2_2=0x7f090011;
+        public static final int row3=0x7f09000f;
+        public static final int row3_2=0x7f090012;
+        public static final int search=0x7f090013;
     }
     public static final class layout {
-        public static final int form=0x7f030000;
-        public static final int form2=0x7f030001;
-        public static final int list_header=0x7f030002;
-        public static final int list_header2=0x7f030003;
-        public static final int list_row=0x7f030004;
-        public static final int list_row2=0x7f030005;
+        public static final int about=0x7f030000;
+        public static final int form=0x7f030001;
+        public static final int form2=0x7f030002;
+        public static final int list_header=0x7f030003;
+        public static final int list_header2=0x7f030004;
+        public static final int list_row=0x7f030005;
+        public static final int list_row2=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -98,6 +100,7 @@ public final class R {
         public static final int longitude=0x7f060022;
         public static final int longitude_=0x7f06000e;
         public static final int longitude_2_=0x7f06001a;
+        public static final int my_names_cameron_mozie_and_i_am_a_student_at_full_sail_university_i_currently_reside_in_landover_md_and_am_looking_to_graduate_fall_2014_=0x7f060028;
         public static final int popular_zipcodes=0x7f060007;
         public static final int region=0x7f06001e;
         public static final int region_=0x7f060011;

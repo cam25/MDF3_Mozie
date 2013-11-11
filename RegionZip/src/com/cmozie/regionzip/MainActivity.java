@@ -477,13 +477,6 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 			alert.show();
 			
 		}
-		
-		 	
-
-		
-		
-		
-			
 
 		 }
 	
@@ -700,6 +693,22 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
  
         sv.setOnQueryTextListener(this);
     }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+		switch (item.getItemId()) {
+	
+		case R.id.aboutPage:
+			Intent aboutIntent = new Intent(this, About.class);
+			  startActivity(aboutIntent);
+			
+		break;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+		
+	}
+		
 
 	@Override
 	public boolean onQueryTextChange(String newText) {

@@ -180,7 +180,9 @@ public class InfoActivity extends Activity{
     	Intent intent = new Intent(Intent.ACTION_VIEW,
     			
     			
-			Uri.parse("google.navigation:q="+ zipp));
+			//Uri.parse("google.navigation:q="+ zipp));
+		Uri.parse("http://maps.google.com/maps?q="+ zipp +"&zoom=14&size=512x512&maptype=roadmap&sensor=false"));
+
     	//starts the intent activity
     	startActivity(intent);
     }
@@ -208,7 +210,11 @@ public boolean onOptionsItemSelected(MenuItem item){
 		  startActivity(homeIntent);
 
 		break;
-
+	case R.id.aboutPage:
+		Intent aboutIntent = new Intent(this, About.class);
+		  startActivity(aboutIntent);
+		
+	break;
 	default:
 		break;
 	}
