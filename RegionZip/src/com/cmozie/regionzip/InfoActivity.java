@@ -12,6 +12,7 @@ package com.cmozie.regionzip;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -21,6 +22,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -51,7 +53,10 @@ public class InfoActivity extends Activity{
 		
 		setContentView(R.layout.form2);
 		ListView listview = (ListView) this.findViewById(R.id.list2);
-	
+		
+		//accesses the action bar
+		ActionBar actionBar = getActionBar();
+	    actionBar.setDisplayHomeAsUpEnabled(true);
 		
 		View listHeader = this.getLayoutInflater().inflate(R.layout.list_header2, null);
 		listview.addHeaderView(listHeader);
@@ -192,6 +197,24 @@ public class InfoActivity extends Activity{
 	    setResult(RESULT_OK, data);
 	    super.finish();
 	}
+@Override
+public boolean onOptionsItemSelected(MenuItem item){
+	switch (item.getItemId()) {
+	
+	//returns to main activity
+	case android.R.id.home:
+		Intent homeIntent = new Intent(this, MainActivity.class);
+		  homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		  startActivity(homeIntent);
+
+		break;
+
+	default:
+		break;
+	}
+	return super.onOptionsItemSelected(item);
+	
+}
 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)

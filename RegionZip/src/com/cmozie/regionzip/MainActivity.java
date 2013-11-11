@@ -9,6 +9,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.SearchManager;
@@ -31,6 +32,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -119,7 +121,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		//setting contentView to my inflated view/form
 		position = Spinner.INVALID_POSITION;
 		_context = this;
-		
+		  
 		
 		 //webConnection jar file usage
 		 _connected = WebStuff.getConnectionStatus(_context);
@@ -665,6 +667,8 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 	   Log.i("Bundle",savedInstanceState.toString());
 	  
 	 }
+ 	
+ 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
@@ -710,7 +714,10 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 	public boolean onQueryTextSubmit(String query) {
 		// TODO Auto-generated method stub
 		Log.i("SUBMIT", query);
-		
+		 InputMethodManager inputManager = (InputMethodManager)            
+				  this.getSystemService(Context.INPUT_METHOD_SERVICE); 
+				    inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),      
+				    InputMethodManager.HIDE_NOT_ALWAYS);
 		return false;
 	}
 	
