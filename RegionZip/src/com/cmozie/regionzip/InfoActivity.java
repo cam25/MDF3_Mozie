@@ -180,7 +180,7 @@ public class InfoActivity extends Activity{
     	Intent intent = new Intent(Intent.ACTION_VIEW,
     			
     			
-			//Uri.parse("google.navigation:q="+ zipp));
+		//updated map action. Removed gps and implemented map to show location via passed zipcode from intent
 		Uri.parse("http://maps.google.com/maps?q="+ zipp +"&zoom=14&size=512x512&maptype=roadmap&sensor=false"));
 
     	//starts the intent activity
