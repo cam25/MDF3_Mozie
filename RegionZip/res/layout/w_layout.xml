@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="4dp"
+    android:background="@color/sysDkGray"
+    android:orientation = "vertical"
+     >
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="horizontal" >
+
+         <ImageButton
+             android:id="@+id/widgButn"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="0.60"
+             android:background="@drawable/widgetpic"
+             android:contentDescription="@string/todo" />
+
+         <TextView
+             android:id="@+id/updateInfo"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:text="TextView" />
+     </LinearLayout>
+
+</FrameLayout>

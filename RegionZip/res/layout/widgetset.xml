@@ -2,12 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/aboutText"
+    <WebView
+        android:id="@+id/widgwebView1"
         android:layout_width="match_parent"
-        android:layout_height="180dp" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
