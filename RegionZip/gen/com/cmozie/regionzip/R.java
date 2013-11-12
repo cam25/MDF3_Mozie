@@ -44,9 +44,11 @@ public final class R {
         public static final int zipcodebanner=0x7f020006;
     }
     public static final class id {
-        public static final int aboutPage=0x7f0a0017;
+        public static final int aboutPage=0x7f0a001c;
         public static final int aboutText=0x7f0a0000;
         public static final int banner=0x7f0a0001;
+        public static final int button1=0x7f0a001a;
+        public static final int east=0x7f0a0018;
         public static final int favList=0x7f0a0004;
         public static final int getHistory=0x7f0a0002;
         public static final int list=0x7f0a0005;
@@ -57,17 +59,20 @@ public final class R {
         public static final int location2_header2=0x7f0a000b;
         public static final int location3_header=0x7f0a0009;
         public static final int location3_header2=0x7f0a000c;
+        public static final int north=0x7f0a0016;
         public static final int popularZipcodes=0x7f0a0003;
+        public static final int radioGroup1=0x7f0a0015;
         public static final int row1=0x7f0a000d;
         public static final int row1_2=0x7f0a0010;
         public static final int row2=0x7f0a000e;
         public static final int row2_2=0x7f0a0011;
         public static final int row3=0x7f0a000f;
         public static final int row3_2=0x7f0a0012;
-        public static final int search=0x7f0a0016;
+        public static final int search=0x7f0a001b;
+        public static final int south=0x7f0a0017;
         public static final int updateInfo=0x7f0a0014;
+        public static final int west=0x7f0a0019;
         public static final int widgButn=0x7f0a0013;
-        public static final int widgwebView1=0x7f0a0015;
     }
     public static final class layout {
         public static final int about=0x7f030000;
@@ -98,6 +103,7 @@ public final class R {
         public static final int county_=0x7f07000b;
         public static final int county_2_=0x7f070017;
         public static final int csa_name_=0x7f07000f;
+        public static final int east=0x7f07002c;
         public static final int enter_zipcode_here=0x7f070005;
         public static final int hello_world=0x7f070002;
         public static final int latitude=0x7f070023;
@@ -107,6 +113,7 @@ public final class R {
         public static final int longitude_=0x7f07000e;
         public static final int longitude_2_=0x7f07001a;
         public static final int my_names_cameron_mozie_and_i_am_a_student_at_full_sail_university_i_currently_reside_in_landover_md_and_am_looking_to_graduate_fall_2014_=0x7f070028;
+        public static final int north=0x7f07002a;
         public static final int popular_zipcodes=0x7f070007;
         public static final int region=0x7f07001e;
         public static final int region_=0x7f070011;
@@ -114,6 +121,8 @@ public final class R {
         public static final int search=0x7f070006;
         public static final int searchButn=0x7f070004;
         public static final int search_all_regions=0x7f07001f;
+        public static final int show_region=0x7f07002e;
+        public static final int south=0x7f07002b;
         public static final int state_=0x7f07000c;
         public static final int state_2_=0x7f070018;
         public static final int textFieldText=0x7f070003;
@@ -122,6 +131,7 @@ public final class R {
         public static final int timezone_2_=0x7f07001c;
         public static final int title_activity_info=0x7f070020;
         public static final int todo=0x7f070029;
+        public static final int west=0x7f07002d;
         public static final int zipcode=0x7f070013;
         public static final int zipcode_2_=0x7f070014;
         public static final int zipcode_banner=0x7f070008;

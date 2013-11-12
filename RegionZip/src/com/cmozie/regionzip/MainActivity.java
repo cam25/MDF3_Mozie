@@ -23,8 +23,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
-
-
 import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
 import android.view.Menu;
@@ -46,9 +44,7 @@ import android.widget.Toast;
 import android.widget.TextView;
 import com.cmozie.Libz.FileStuff;
 import com.cmozie.classes.*;
-
 import webConnections.*;
-
 
 // TODO: Auto-generated Javadoc
 /**
@@ -60,9 +56,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 
 	//--public statics
 	public static Context _context;
-
 	public static Button searchButton;
-	
 	static Spinner spinner = null;
 	public int selected;
 	//public int selected; 

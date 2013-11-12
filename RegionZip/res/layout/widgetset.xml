@@ -4,9 +4,44 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <WebView
-        android:id="@+id/widgwebView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/north"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/north" />
+
+        <RadioButton
+            android:id="@+id/south"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/south" />
+
+        <RadioButton
+            android:id="@+id/east"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/east" />
+        
+        <RadioButton
+        android:id="@+id/west"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/west" />
+        
+    </RadioGroup>
+
+    
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="236dp"
+        android:layout_height="wrap_content"
+        android:text="@string/show_region" />
 
 </LinearLayout>
