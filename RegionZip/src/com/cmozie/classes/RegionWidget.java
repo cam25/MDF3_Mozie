@@ -14,6 +14,7 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 public class RegionWidget extends AppWidgetProvider {
+	public String returnedZip = "\n was the last \nselected Region";
 @Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub

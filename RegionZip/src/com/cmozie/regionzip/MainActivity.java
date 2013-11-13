@@ -676,16 +676,21 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 	}
 	private void doSearch(MenuItem searchItem) {
 
- 
+		
        sm = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         if (sm != null) {
    
             SearchableInfo info = sm.getSearchableInfo(getComponentName());
             
             sv.setSearchableInfo(info);
+            //passes the widget data to search view.
+            sv.setQuery(WidgetSettings.zipp, true);
+            
         }
- 
+        
+       
         sv.setOnQueryTextListener(this);
+       
     }
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
@@ -708,8 +713,11 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 	public boolean onQueryTextChange(String newText) {
 		// TODO Auto-generated method stub
 		Log.i("CHANGE", newText);
+		
 		//filters the listview with the text entered in search query
+		
 		adapter.getFilter().filter(newText);
+		
 		return false;
 	}
 
@@ -717,6 +725,8 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 	public boolean onQueryTextSubmit(String query) {
 		// TODO Auto-generated method stub
 		Log.i("SUBMIT", query);
+		//filters on search.
+		adapter.getFilter().filter(query);
 		 InputMethodManager inputManager = (InputMethodManager)            
 				  this.getSystemService(Context.INPUT_METHOD_SERVICE); 
 				    inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),      
