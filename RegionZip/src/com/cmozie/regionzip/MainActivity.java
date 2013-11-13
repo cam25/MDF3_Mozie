@@ -3,9 +3,6 @@ package com.cmozie.regionzip;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import android.annotation.SuppressLint;
@@ -116,7 +113,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		position = Spinner.INVALID_POSITION;
 		_context = this;
 		  
-		
+
 		 //webConnection jar file usage
 		 _connected = WebStuff.getConnectionStatus(_context);
 		 if (_connected) {
@@ -630,6 +627,8 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		super.onSaveInstanceState(outState);
 		
 	}
+	
+	
 
 	
 	 /* (non-Javadoc)
