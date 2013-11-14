@@ -33,6 +33,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SimpleAdapter;
@@ -48,7 +49,7 @@ import webConnections.*;
  * The Class MainActivity.
  */
 
-@SuppressLint("HandlerLeak")
+
 public class MainActivity extends Activity implements SearchView.OnQueryTextListener {
 
 	//--public statics
@@ -72,6 +73,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 	public static Cursor cursor;
 	public static SearchView sv;
 	public static SearchManager sm; 
+	public static LinearLayout ll;
 	
 
 	//strings
@@ -104,6 +106,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.form);
+		ll = (LinearLayout)findViewById(R.id.layout);
 		listview = (ListView) this.findViewById(R.id.list);
 	listview.setTextFilterEnabled(true);
 		
@@ -387,7 +390,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 									@Override
 									public void onClick(View v) {
 										// TODO Auto-generated method stub
-										
+									
 										_connected = WebStuff.getConnectionStatus(_context);
 										 if (_connected) {
 											 

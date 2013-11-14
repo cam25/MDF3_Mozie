@@ -18,6 +18,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -42,6 +44,7 @@ public class InfoActivity extends Activity{
 	public SimpleAdapter adapter;
 	boolean isShown;
 	public ArrayList<HashMap<String, String>> mylist;
+	public static LinearLayout ll;
 	
 	
 	/* (non-Javadoc)
@@ -53,7 +56,7 @@ public class InfoActivity extends Activity{
 		
 		setContentView(R.layout.form2);
 		ListView listview = (ListView) this.findViewById(R.id.list2);
-		
+		ll = (LinearLayout)findViewById(R.id.layout2);
 		//accesses the action bar
 		ActionBar actionBar = getActionBar();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
@@ -99,9 +102,10 @@ public class InfoActivity extends Activity{
 		
 		
 			Intent activityInfo = getIntent();
-			Log.i("test", activityInfo.toString());
-			
+			Log.i("test", activityInfo.getExtras().getString("region").toString());
+		
 		if (activityInfo != null) {
+			
 			
 			Toast.makeText(_context, "Second Activity", Toast.LENGTH_SHORT).show();
 			

@@ -13,6 +13,7 @@ import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RemoteViews;
@@ -41,11 +43,14 @@ public class WidgetSettings extends Activity {
 	public static String zipp;
 	public RemoteViews theView;
 	public ImageButton widget;
+	public LinearLayout theLayout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.widgetset);
+		theLayout = (LinearLayout)findViewById(R.id.layout);
 		regions = (RadioGroup) findViewById(R.id.radioGroup1);
 		north = (RadioButton)findViewById(R.id.north);
 		south = (RadioButton)findViewById(R.id.south);
@@ -55,6 +60,45 @@ public class WidgetSettings extends Activity {
 		showRegion = (Button)findViewById(R.id.button1);
 		widget = (ImageButton) this.findViewById(R.id.widgButn);
 		context = this;
+		
+		
+		north.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				theLayout.setBackgroundColor(Color.BLUE);
+			}
+		});
+		south.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				theLayout.setBackgroundColor(Color.RED);
+			}
+		});
+		
+		east.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+		    	theLayout.setBackgroundColor(Color.GREEN);
+			}
+		});
+		
+			west.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					theLayout.setBackgroundColor(Color.YELLOW);
+				}
+			});
+		
+	
 		showRegion.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -83,11 +127,12 @@ public class WidgetSettings extends Activity {
 							    	theView = new RemoteViews(context.getPackageName(),R.layout.w_layout);
 									
 									
-									theView.setTextViewText(R.id.updateInfo, zipp);
+									theView.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
+									theLayout.setBackgroundColor(Color.BLUE);
 							break;
 						case R.id.south:
 							Log.i("button", "south");
-							zipp = "31333";
+							zipp = "33133";
 							Intent intent2 = new Intent(Intent.ACTION_VIEW,
 					    			
 					    			
@@ -98,7 +143,8 @@ public class WidgetSettings extends Activity {
 							    	theView = new RemoteViews(context.getPackageName(),R.layout.w_layout);
 									
 									
-									theView.setTextViewText(R.id.updateInfo, zipp);
+							    	theView.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
+							    	theLayout.setBackgroundColor(Color.RED);
 							break;
 							
 						case R.id.east:
@@ -113,7 +159,8 @@ public class WidgetSettings extends Activity {
 							    	theView = new RemoteViews(context.getPackageName(),R.layout.w_layout);
 									
 									
-									theView.setTextViewText(R.id.updateInfo, zipp);
+							    	theView.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
+							    	theLayout.setBackgroundColor(Color.GREEN);
 							Log.i("button", "east");
 							break;
 						case R.id.west:
@@ -128,8 +175,9 @@ public class WidgetSettings extends Activity {
 							    	theView = new RemoteViews(context.getPackageName(),R.layout.w_layout);
 									
 									
-									theView.setTextViewText(R.id.updateInfo, zipp);
+							    	theView.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
 							Log.i("button", "west");
+							theLayout.setBackgroundColor(Color.YELLOW);
 							break;
 						default:
 							break;

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/layout2"
     android:background="@android:color/holo_blue_dark" >
     
  <ImageView 
@@ -15,19 +16,15 @@
             android:src="@drawable/zipcodebanner">
             </ImageView>
             
-
-         
-          
-   
 		<ListView
 		    android:id="@+id/list2"
 		    android:layout_width="match_parent"
 		    android:layout_height="0dp"
-		     android:paddingTop="1dp"
-		     android:paddingBottom="15dp"
-		    android:layout_weight="1"
+		    android:layout_weight="0.33"
 		    android:divider="#ffffffff"
-		    android:drawSelectorOnTop="false">
+		    android:drawSelectorOnTop="false"
+		    android:paddingBottom="15dp"
+		    android:paddingTop="1dp" >
 		    
 		</ListView>
 		 

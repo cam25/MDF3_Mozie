@@ -15,11 +15,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.cmozie.Libz.FileStuff;
+import com.cmozie.regionzip.MainActivity;
+
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.MatrixCursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
@@ -291,7 +295,7 @@ public class ZipcodeContentProvider extends ContentProvider {
 
 						if (two.get("city").equals("New York")) {
 							Log.i("CP", "NY");
-
+							
 							String _zipcode = two.getString("zip_code");
 							String _areaCode = two.getString("area_code");
 							String _region = two.getString("region");
@@ -317,7 +321,7 @@ public class ZipcodeContentProvider extends ContentProvider {
 						
 						if (two.get("city").equals("Washington")) {
 					
-						
+					
 						String _zipcode = two.getString("zip_code");
 						String _areaCode = two.getString("area_code");
 						String _region = two.getString("region");
@@ -343,7 +347,8 @@ public class ZipcodeContentProvider extends ContentProvider {
 						//Log.d("CP", "two.get(city)="+two.get("city"));
 						if (two.get("city").equals("Miami")) {
 							//Log.i("CP", "DC");
-						
+							
+					
 						String _zipcode = two.getString("zip_code");
 						String _areaCode = two.getString("area_code");
 						String _region = two.getString("region");
@@ -367,7 +372,7 @@ public class ZipcodeContentProvider extends ContentProvider {
 						//Log.d("CP", "two.get(city)="+two.get("city"));
 						if (two.get("state").equals("IL")) {
 							//Log.i("CP", "DC");
-						
+							
 						String _zipcode = two.getString("zip_code");
 						String _areaCode = two.getString("area_code");
 						String _region = two.getString("region");
@@ -391,7 +396,7 @@ public class ZipcodeContentProvider extends ContentProvider {
 						//Log.d("CP", "two.get(city)="+two.get("city"));
 						if (two.get("state").equals("CA")) {
 							//Log.i("CP", "DC");
-						
+							
 						String _zipcode = two.getString("zip_code");
 						String _areaCode = two.getString("area_code");
 						String _region = two.getString("region");
