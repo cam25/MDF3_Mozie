@@ -1,11 +1,11 @@
 /*
- * project 			Java2Week3
+ * project 			RegionZip
  * 
  * package			com.cmozie.classes
  * 
  * name				cameronmozie
  * 
- * date				Oct 17, 2013
+ * date				Nov 14, 2013
  */
 
 package com.cmozie.classes;
@@ -15,15 +15,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.cmozie.Libz.FileStuff;
-import com.cmozie.regionzip.MainActivity;
-
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.MatrixCursor;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
@@ -417,57 +413,6 @@ public class ZipcodeContentProvider extends ContentProvider {
 			}
 				
 				break;
-		/*case MIAMI:
-			String itemId2 = uri.getLastPathSegment();
-			
-			Log.i("queryId", itemId2);
-			
-			int index2 = 0;
-			Log.i("all2", String.valueOf(index2));
-			try {
-				index = Integer.parseInt(itemId2);
-				Log.i("index", itemId2);
-				
-			} catch (Exception e) {
-				
-				Log.e("Query", "Index format error");
-				
-				break;
-			}
-			
-			if (index < 0 || index > ja.length()) {
-				Log.e("query", "index out of range for" + uri.toString());
-				break;
-			}
-			try {
-				
-					if (two.getString("city").contentEquals("Miami")) {
-						
-					
-					Log.i("MIAMI", "WOrks");
-					//boolean zippy = two.getString("zip_code").equals("33133");
-					
-					String _areaCode = two.getString("area_code");
-					String _zipcode = two.getString("zip_code");
-					String _region = two.getString("region");
-					
-					
-					result.addRow(new Object[] {index,_zipcode,_areaCode, _region});
-					}
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			break;*/
-			
-			
-			
-		
-			
-		
-				
-			
 		
 		}
 		return result;

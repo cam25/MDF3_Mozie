@@ -1,11 +1,11 @@
 /*
- * project 			Java2Week3
+ * project 			RegionZip
  * 
  * package			com.cmozie.classes
  * 
  * name				cameronmozie
  * 
- * date				Oct 17, 2013
+ * date				Nov 14, 2013
  */
 
 package com.cmozie.classes;

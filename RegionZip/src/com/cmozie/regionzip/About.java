@@ -1,3 +1,12 @@
+/*
+ * project 			RegionZip
+ * 
+ * package			com.cmozie.regionzip
+ * 
+ * name				cameronmozie
+ * 
+ * date				Nov 14, 2013
+ */
 package com.cmozie.regionzip;
 
 import android.app.ActionBar;
@@ -8,8 +17,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class About.
+ */
 public class About extends Activity {
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
@@ -23,6 +39,10 @@ public class About extends Activity {
 		    
 			
 	}
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
 		switch (item.getItemId()) {
@@ -41,6 +61,10 @@ public class About extends Activity {
 		return super.onOptionsItemSelected(item);
 		
 	}
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

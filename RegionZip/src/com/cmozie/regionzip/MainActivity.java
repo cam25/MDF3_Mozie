@@ -1,3 +1,12 @@
+/*
+ * project 			RegionZip
+ * 
+ * package			com.cmozie.regionzip
+ * 
+ * name				cameronmozie
+ * 
+ * date				Nov 14, 2013
+ */
 package com.cmozie.regionzip;
 
 
@@ -6,7 +15,6 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.SearchManager;
@@ -23,7 +31,6 @@ import android.os.Messenger;
 import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,6 +57,7 @@ import webConnections.*;
  */
 
 
+@SuppressLint("HandlerLeak")
 public class MainActivity extends Activity implements SearchView.OnQueryTextListener {
 
 	//--public statics
@@ -596,6 +604,12 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		
 		
 	};
+	
+	/**
+	 * Show gps.
+	 *
+	 * @param zipcode the zipcode
+	 */
 	public void showGPS(String zipcode) {
     	Intent intent = new Intent(Intent.ACTION_VIEW,
     			
@@ -688,6 +702,12 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		doSearch(search);
 		return super.onCreateOptionsMenu(menu);
 	}
+	
+	/**
+	 * Do search.
+	 *
+	 * @param searchItem the search item
+	 */
 	private void doSearch(MenuItem searchItem) {
 
 		
@@ -706,6 +726,10 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
         sv.setOnQueryTextListener(this);
        
     }
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
 		switch (item.getItemId()) {
@@ -723,6 +747,9 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 	}
 		
 
+	/* (non-Javadoc)
+	 * @see android.widget.SearchView.OnQueryTextListener#onQueryTextChange(java.lang.String)
+	 */
 	@Override
 	public boolean onQueryTextChange(String newText) {
 		// TODO Auto-generated method stub
@@ -735,11 +762,14 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.widget.SearchView.OnQueryTextListener#onQueryTextSubmit(java.lang.String)
+	 */
 	@Override
 	public boolean onQueryTextSubmit(String query) {
 		// TODO Auto-generated method stub
 		Log.i("SUBMIT", query);
-		//filters on search.
+		//filters on listview on search.
 		adapter.getFilter().filter(query);
 		 InputMethodManager inputManager = (InputMethodManager)            
 				  this.getSystemService(Context.INPUT_METHOD_SERVICE); 

@@ -1,10 +1,15 @@
+/*
+ * project 			RegionZip
+ * 
+ * package			com.cmozie.classes
+ * 
+ * name				cameronmozie
+ * 
+ * date				Nov 14, 2013
+ */
 package com.cmozie.classes;
 
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.cmozie.regionzip.MainActivity;
 import com.cmozie.regionzip.R;
 
@@ -26,8 +31,11 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class WidgetSettings.
+ */
 public class WidgetSettings extends Activity {
 
 	AppWidgetManager manager;
@@ -41,27 +49,33 @@ public class WidgetSettings extends Activity {
 	public int checkedID;
 	public Button showRegion;
 	public static String zipp;
-	public RemoteViews theView;
+	public RemoteViews rViews;
 	public ImageButton widget;
 	public LinearLayout theLayout;
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.widgetset);
+		
+		//UI elements
 		theLayout = (LinearLayout)findViewById(R.id.layout);
 		regions = (RadioGroup) findViewById(R.id.radioGroup1);
 		north = (RadioButton)findViewById(R.id.north);
 		south = (RadioButton)findViewById(R.id.south);
 		east = (RadioButton)findViewById(R.id.east);
 		west = (RadioButton)findViewById(R.id.west);
-		url = "www.google.com";
 		showRegion = (Button)findViewById(R.id.button1);
 		widget = (ImageButton) this.findViewById(R.id.widgButn);
 		context = this;
 		
 		
+		//On clicks for color toggling
 		north.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -99,18 +113,22 @@ public class WidgetSettings extends Activity {
 			});
 		
 	
+			
 		showRegion.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 		
+				//bundle for extras
 				Bundle theExtras = getIntent().getExtras();
 				if (theExtras != null) {
+					
+					//int holding the widgit id valid/invalid
 					int widgId = theExtras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
 					
 					
-					
+					//if the widgit id is not invalid
 					if (widgId != AppWidgetManager.INVALID_APPWIDGET_ID) {
 						switch (regions.getCheckedRadioButtonId()) {
 						case R.id.north:
@@ -122,12 +140,12 @@ public class WidgetSettings extends Activity {
 					    			
 									Uri.parse("http://maps.google.com/maps?q="+zipp+"&zoom=14&size=512x512&maptype=roadmap&sensor=false"));
 
-							    	//starts the intent activity
+							    	//starts the intent activity for map view
 							    	startActivity(intent);
-							    	theView = new RemoteViews(context.getPackageName(),R.layout.w_layout);
+							    	rViews = new RemoteViews(context.getPackageName(),R.layout.w_layout);
 									
-									
-									theView.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
+									//passes the data to my widget
+									rViews.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
 									theLayout.setBackgroundColor(Color.BLUE);
 							break;
 						case R.id.south:
@@ -140,10 +158,10 @@ public class WidgetSettings extends Activity {
 
 							    	//starts the intent activity
 							    	startActivity(intent2);
-							    	theView = new RemoteViews(context.getPackageName(),R.layout.w_layout);
+							    	rViews = new RemoteViews(context.getPackageName(),R.layout.w_layout);
 									
-									
-							    	theView.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
+							    	//passes the data to my widget
+							    	rViews.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
 							    	theLayout.setBackgroundColor(Color.RED);
 							break;
 							
@@ -156,10 +174,10 @@ public class WidgetSettings extends Activity {
 
 							    	//starts the intent activity
 							    	startActivity(intent3);
-							    	theView = new RemoteViews(context.getPackageName(),R.layout.w_layout);
+							    	rViews = new RemoteViews(context.getPackageName(),R.layout.w_layout);
 									
-									
-							    	theView.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
+							    	//passes the data to my widget
+							    	rViews.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
 							    	theLayout.setBackgroundColor(Color.GREEN);
 							Log.i("button", "east");
 							break;
@@ -172,22 +190,24 @@ public class WidgetSettings extends Activity {
 
 							    	//starts the intent activity
 							    	startActivity(intent4);
-							    	theView = new RemoteViews(context.getPackageName(),R.layout.w_layout);
+							    	rViews = new RemoteViews(context.getPackageName(),R.layout.w_layout);
 									
-									
-							    	theView.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
+							    	//passes the data to my widget
+							    	rViews.setTextViewText(R.id.updateInfo, "Last Area Located:\n "+ zipp );
 							Log.i("button", "west");
 							theLayout.setBackgroundColor(Color.YELLOW);
 							break;
 						default:
 							break;
 						}				
+						
+						//intent/pending intent to make my widget clickable and open my main activity
 						Intent imageButnNtent = new Intent(context,MainActivity.class);
 						PendingIntent pi = PendingIntent.getActivity(context, 0, imageButnNtent, PendingIntent.FLAG_UPDATE_CURRENT);
 						
 						
-						theView.setOnClickPendingIntent(R.id.widgButn, pi);
-						AppWidgetManager.getInstance(context).updateAppWidget(widgId, theView);
+						rViews.setOnClickPendingIntent(R.id.widgButn, pi);
+						AppWidgetManager.getInstance(context).updateAppWidget(widgId, rViews);
 						
 						Intent result = new Intent();
 						result.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgId);
