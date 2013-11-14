@@ -93,7 +93,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 
 	public int position;
 	ListView listview;
-	public String zipcode;
+	public static String zipcode;
 	public HashMap<String, String> displayMap;
 
 	/* (non-Javadoc)
@@ -576,8 +576,10 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 							|| arg2 == 14|| arg2 == 15|| arg2 == 16|| arg2 == 17|| arg2 == 18|| arg2 == 19|| 
 							arg2 == 20) {
 						
+						 zipcode = intentMap.get("zipCode");
+						showGPS(zipcode);
 						
-						Intent infoIntent = new Intent(_context,InfoActivity.class);
+					/*	Intent infoIntent = new Intent(_context,InfoActivity.class);
 						infoIntent.putExtra("zip_code", intentMap.get("zipCode"));
 						infoIntent.putExtra("area_code", intentMap.get("areaCode"));
 						infoIntent.putExtra("region", intentMap.get("region"));
@@ -586,7 +588,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 						startActivityForResult(infoIntent, 0);
 						Log.i("Map", intentMap.toString());
 						Log.i("INTENT", infoIntent.toString());
-						
+						*/
 						
 					}
 			}
@@ -594,6 +596,16 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		
 		
 	};
+	public void showGPS(String zipcode) {
+    	Intent intent = new Intent(Intent.ACTION_VIEW,
+    			
+    			
+		//updated map action. Removed gps and implemented map to show location via passed zipcode from intent
+		Uri.parse("http://maps.google.com/maps?q="+ zipcode +"&zoom=14&size=512x512&maptype=roadmap&sensor=false"));
+
+    	//starts the intent activity
+    	startActivity(intent);
+    }
 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
