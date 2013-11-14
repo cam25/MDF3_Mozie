@@ -584,20 +584,12 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 							|| arg2 == 14|| arg2 == 15|| arg2 == 16|| arg2 == 17|| arg2 == 18|| arg2 == 19|| 
 							arg2 == 20) {
 						
+						//gets the zipcode from intentmap and sets it.
 						 zipcode = intentMap.get("zipCode");
+						 
+						 //calls my gps method with zipcode
 						showGPS(zipcode);
-						
-					/*	Intent infoIntent = new Intent(_context,InfoActivity.class);
-						infoIntent.putExtra("zip_code", intentMap.get("zipCode"));
-						infoIntent.putExtra("area_code", intentMap.get("areaCode"));
-						infoIntent.putExtra("region", intentMap.get("region"));
-					
-					
-						startActivityForResult(infoIntent, 0);
-						Log.i("Map", intentMap.toString());
-						Log.i("INTENT", infoIntent.toString());
-						*/
-						
+				
 					}
 			}
 		});
@@ -650,16 +642,11 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		outState.putInt("spinner", spinner.getSelectedItemPosition());
 		outState.putSerializable("mylist", mylist);
 		outState.putBoolean("button", _pop.isSelected());
-	
-		
-		
+
 		super.onSaveInstanceState(outState);
 		
 	}
-	
-	
 
-	
 	 /* (non-Javadoc)
  	 * @see android.app.Activity#onRestoreInstanceState(android.os.Bundle)
  	 */
@@ -756,7 +743,6 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		Log.i("CHANGE", newText);
 		
 		//filters the listview with the text entered in search query
-		
 		adapter.getFilter().filter(newText);
 		
 		return false;
@@ -769,8 +755,11 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 	public boolean onQueryTextSubmit(String query) {
 		// TODO Auto-generated method stub
 		Log.i("SUBMIT", query);
+		
 		//filters on listview on search.
 		adapter.getFilter().filter(query);
+		
+		//hides keyboard
 		 InputMethodManager inputManager = (InputMethodManager)            
 				  this.getSystemService(Context.INPUT_METHOD_SERVICE); 
 				    inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),      
