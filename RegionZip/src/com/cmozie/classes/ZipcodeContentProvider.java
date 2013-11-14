@@ -211,7 +211,7 @@ public class ZipcodeContentProvider extends ContentProvider {
 						one.getString("zip_code").contentEquals("20018")||
 						one.getString("zip_code").contentEquals("20032")||
 						one.getString("zip_code").contentEquals("10002")||
-						one.getString("zip_code").contentEquals("10005")||
+						one.getString("zip_code").contentEquals("10007")||
 						one.getString("zip_code").contentEquals("60018")||
 						one.getString("zip_code").contentEquals("60068")||
 						one.getString("zip_code").contentEquals("60067")||

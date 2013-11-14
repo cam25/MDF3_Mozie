@@ -133,7 +133,7 @@ public class WidgetSettings extends Activity {
 						switch (regions.getCheckedRadioButtonId()) {
 						case R.id.north:
 							Log.i("button", "north");
-							zipp = "10005";
+							zipp = "10007";
 							 
 							Intent intent = new Intent(Intent.ACTION_VIEW,
 					    			

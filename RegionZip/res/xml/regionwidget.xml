@@ -4,7 +4,7 @@
     				android:minHeight="30dp"
     				android:previewImage="@drawable/widgetpic"
     				android:initialLayout="@layout/w_layout"
-    				android:resizeMode="horizontal"
+    				android:resizeMode="horizontal|vertical"
     				android:widgetCategory="home_screen"
     				android:configure="com.cmozie.classes.WidgetSettings"
     				android:initialKeyguardLayout="@layout/w_layout" android:updatePeriodMillis="18000000">
