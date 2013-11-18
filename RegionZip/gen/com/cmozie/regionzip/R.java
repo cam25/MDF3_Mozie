@@ -63,6 +63,7 @@ public final class R {
         public static final int row2=0x7f0a000c;
         public static final int row3=0x7f0a000d;
         public static final int search=0x7f0a0016;
+        public static final int sendFeedback=0x7f0a0018;
         public static final int south=0x7f0a0012;
         public static final int updateInfo=0x7f0a000f;
         public static final int webView=0x7f0a0001;
@@ -98,6 +99,7 @@ public final class R {
         public static final int csa_name_=0x7f07000f;
         public static final int east=0x7f07002c;
         public static final int enter_zipcode_here=0x7f070005;
+        public static final int feedback=0x7f07002f;
         public static final int hello_world=0x7f070002;
         public static final int latitude=0x7f070023;
         public static final int latitude_=0x7f07000d;

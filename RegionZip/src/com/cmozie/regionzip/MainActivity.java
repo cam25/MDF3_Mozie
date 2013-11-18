@@ -726,6 +726,10 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 			  startActivity(aboutIntent);
 			
 		break;
+		case R.id.sendFeedback:
+			Intent feedBackIntent = new Intent(this, Feedback.class);
+			  startActivity(feedBackIntent);
+			  break;
 		default:
 			break;
 		}
