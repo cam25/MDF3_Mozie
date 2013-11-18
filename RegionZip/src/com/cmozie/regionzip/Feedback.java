@@ -1,10 +1,14 @@
 package com.cmozie.regionzip;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
+@SuppressLint("SetJavaScriptEnabled")
 public class Feedback extends Activity {
 
 	@Override
@@ -13,6 +17,10 @@ public class Feedback extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.feedback);
 		
+		WebView myWebView = (WebView) findViewById(R.id.webView);
+		myWebView.loadUrl("file:///android_asset/feedback.html");
+		WebSettings webSettings = myWebView.getSettings();
+		webSettings.setJavaScriptEnabled(true);
 		ActionBar actionBar = getActionBar();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	}
