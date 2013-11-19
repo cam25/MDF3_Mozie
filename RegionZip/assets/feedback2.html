@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" debug="true">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-
-
+<meta charset="UTF-8">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css"/>
 <link rel="stylesheet" href="../assets/themes/AndroidHoloDarkLight.min.css" />
-
-
 <title>RegionZip HTML</title>
 </head>
+
 <body>
 <div data-role="page"data-theme="a">
 <div data-role="header">
@@ -18,10 +14,6 @@
 
 
 </div>
-
-
-
-<div data-role="contents">
 <h2 id="experience">How was your experience?</h2>
 <select name="exp" id="rate">
    <optgroup label="Ratings">
@@ -31,29 +23,18 @@
   </optgroup>
 </select>
 <textarea name="comments" id="infoBox"  placeholder="Enter text here" > </textarea><br>
-
-
-
+<input type="button" value="Send" onClick="passToJava()" />
 </div>
-<div data-role="buttons">
-<script language="text/javascript">
-
- function getJSText(string){
-	var testVal = document.getElementById("infoBox").value;
-	CallJava.getJStext(testVal);
-	console.log("test");
-	
-}
-
+<script type="text/javascript">
+    function passToJava() {
+    var testVal = document.getElementById("infoBox").value;
+    var rateResult = document.getElementById("rate").value;
+        Android.getJSText(testVal,rateResult);
+        
+        
+        
+    }
 </script>
-<input type="button" value="Send" onclick="getJSText(string)" />
-
-<input type="button" value="Cancel" />
-
-</div>
-
-</div>
-
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 

@@ -5,14 +5,37 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.webkit.ConsoleMessage;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Toast;
 
-@SuppressLint({ "SetJavaScriptEnabled", "JavascriptInterface" })
+
 public class Feedback extends Activity {
 	public static WebView theWebView;
+public class JavaScriptInterface {
+		
+	    Context context;
+
+	 
+	    JavaScriptInterface(Context c) {
+	        context = c;
+	       Log.i("Test", "Test1");
+	    
+	    }
+	    
+	    @JavascriptInterface
+	    public void getJSText(String textValue, String rateValue) {
+	        Toast.makeText(context, rateValue, Toast.LENGTH_SHORT).show();
+	    }
+	  
+	  
+	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -20,11 +43,11 @@ public class Feedback extends Activity {
 		setContentView(R.layout.feedback);
 		
 		WebView theWebView = (WebView) findViewById(R.id.webView);
-		theWebView.loadUrl("file:///android_asset/feedback.html");
+		theWebView.loadUrl("file:///android_asset/feedback2.html");
 	
-		JavaScriptInterface jsInterface = new JavaScriptInterface(this);
+		//final JavaScriptInterface jsInterface = new JavaScriptInterface(this);
 		
-		theWebView.addJavascriptInterface(jsInterface, "CallJava");
+		theWebView.addJavascriptInterface(new JavaScriptInterface(this), "Android");
 		
 		WebSettings webSettings = theWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
@@ -36,25 +59,14 @@ public class Feedback extends Activity {
 	    
 	}
 	
-	public class JavaScriptInterface {
-	    Context context;
-
-	  
-	    JavaScriptInterface(Context c) {
-	        context = c;
-	    }
-	    public void getJSText(){
-	    	AlertDialog.Builder myDialog
-	        = new AlertDialog.Builder(Feedback.this);
-	        myDialog.setTitle("Test!");
-	        myDialog.setMessage("Hopefully this loads!");
-	        myDialog.setPositiveButton("ON", null);
-	        myDialog.show();
-	    }
-
-	  
-	}
-	 
+	
+	public boolean onConsoleMessage(ConsoleMessage cm) 
+    {
+        Log.d("ShowMote", cm.message() + " -- From line "
+                             + cm.lineNumber() + " of "
+                             + cm.sourceId() );
+        return true;
+    }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
