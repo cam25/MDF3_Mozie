@@ -70,26 +70,15 @@ font-size: 25px;
 
   </optgroup>
 </select>
-<input name="comments" id="infoBox"  placeholder="Enter Comments Here..."> </input><br>
+<textarea  name="comments" id="infoBox"  placeholder="Enter Comments Here..."></textarea><br>
 
  <img id ="img" align="middle"  src="good.png"/>
   <img id ="img" align="top"  src="ok.png"  />
  <img id ="img" align="top"   src="bad.png"/>
 
- <script>
-$('#img').on({
-    'click': function () {
-        var origsrc = $(this).attr('src');
-        var src = '';
-        if (origsrc == 'good.png') src = 'img2_on.png';
-        if (origsrc == 'img2_on.png') src = 'img3_on.png';
-        if (origsrc == 'img3_on.png') src = 'img1_on.png';
-        $(this).attr('src', src);
-    }
-});
 
-</script>
 <input type="button" value="Send" onClick="passToJava()" />
+<input type="button" value="Clear" onClick="clearFields()" />
 </div>
 
 <script type="text/javascript">
@@ -101,10 +90,21 @@ $('#img').on({
     var rateResult = document.getElementById("rate").value;
     var pic = document.getElementById('img').appendChild(img);
         Android.getJSText(testVal,rateResult);
-        
   
-        
     }
+</script>
+<script type="text/javascript">
+    function clearFields() {
+    var commentBox = $("#infoBox").val();
+   
+   document.getElementById("infoBox").value="";
+
+   
+ 
+        
+}
+        
+    
 
    
 </script>
