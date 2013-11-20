@@ -13,6 +13,17 @@
 /* Swatches */
 /* A
 -----------------------------------------------------------------------------------------------------------*/
+@font-face {
+    font-family: 'droid_robotregular';
+    src: url('doridrobot-webfont.eot');
+    src: url('doridrobot-webfont.eot?#iefix') format('embedded-opentype'),
+         url('doridrobot-webfont.woff') format('woff'),
+         url('doridrobot-webfont.ttf') format('truetype'),
+         url('doridrobot-webfont.svg#droid_robotregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 .ui-bar-a {
 	border: 1px solid #0099CC /*{a-bar-border}*/;
 	background: #222222 /*{a-bar-background-color}*/;
@@ -47,7 +58,7 @@
 .ui-bar-a select,
 .ui-bar-a textarea,
 .ui-bar-a button {
-	 font-family: RobotoThin, Helvetica, Arial, sans-serif /*{global-font-family}*/;
+	 font-family: droid_robotregular, Helvetica, Arial, sans-serif /*{global-font-family}*/;
 }
 .ui-body-a,
 .ui-overlay-a {
@@ -71,7 +82,7 @@
 .ui-body-a select,
 .ui-body-a textarea,
 .ui-body-a button {
-	 font-family: RobotoThin, Helvetica, Arial, sans-serif /*{global-font-family}*/;
+	 font-family: droid_robotregular, Helvetica, Arial, sans-serif /*{global-font-family}*/;
 }
 .ui-body-a .ui-link-inherit {
 	color: #ffffff /*{a-body-color}*/;
@@ -145,7 +156,7 @@
 .ui-btn-up-a,
 .ui-btn-hover-a,
 .ui-btn-down-a {
-	 font-family: RobotoThin, Helvetica, Arial, sans-serif /*{global-font-family}*/;
+	 font-family: droid_robotregular, Helvetica, Arial, sans-serif /*{global-font-family}*/;
 	text-decoration: none;
 }
 /* B
@@ -184,7 +195,7 @@
 .ui-bar-b select,
 .ui-bar-b textarea,
 .ui-bar-b button {
-	 font-family: RobotoThin, Helvetica, Arial, sans-serif /*{global-font-family}*/;
+	 font-family: droid_robotregular, Helvetica, Arial, sans-serif /*{global-font-family}*/;
 }
 .ui-body-b,
 .ui-overlay-b {

@@ -54,7 +54,10 @@ public class About extends Activity {
 			  startActivity(homeIntent);
 
 			break;
-
+		case R.id.sendFeedback:
+			Intent feedBackIntent = new Intent(this, Feedback.class);
+			  startActivity(feedBackIntent);
+			  break;
 		default:
 			break;
 		}

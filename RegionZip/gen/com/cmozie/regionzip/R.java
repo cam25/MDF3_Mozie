@@ -35,13 +35,16 @@ public final class R {
         public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
-        public static final int flag=0x7f020000;
-        public static final int globe=0x7f020001;
-        public static final int ic_action_filter=0x7f020002;
-        public static final int ic_action_name=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int widgetpic=0x7f020005;
-        public static final int zipcodebanner=0x7f020006;
+        public static final int bad=0x7f020000;
+        public static final int flag=0x7f020001;
+        public static final int globe=0x7f020002;
+        public static final int good=0x7f020003;
+        public static final int ic_action_filter=0x7f020004;
+        public static final int ic_action_name=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int ok=0x7f020007;
+        public static final int widgetpic=0x7f020008;
+        public static final int zipcodebanner=0x7f020009;
     }
     public static final class id {
         public static final int aboutPage=0x7f0a0017;
