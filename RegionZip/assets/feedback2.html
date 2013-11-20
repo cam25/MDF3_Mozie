@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -7,6 +8,7 @@
   <link href='http://fonts.googleapis.com/css?family=Ribeye|Comfortaa|Orbitron' rel='stylesheet' type='text/css'>
 
 <title>RegionZip HTML</title>
+
 <style type="text/css"> 
  h1{
 font-family: 'Ribeye', cursive;
@@ -28,6 +30,20 @@ text-align: center;
 font-family: 'Orbitron', sans-serif;
 font-size: 25px;
 }
+#img{
+
+-webkit-animation: ball-x 2.5s cubic-bezier(0, 0, 0.35, 1);
+}
+   /* cubic-bezier here is to adjust the animation-timing speed.
+   This example makes the ball take longer to slow down. */
+
+@-webkit-keyframes ball-x {
+   0% { -webkit-transform: translateX(-275px); }
+   100% { -webkit-transform: translateX(0px); }
+   
+}
+
+
 
 
 </style>
@@ -56,7 +72,23 @@ font-size: 25px;
 </select>
 <input name="comments" id="infoBox"  placeholder="Enter Comments Here..."> </input><br>
 
- <img id ="img" src="good.png"/>
+ <img id ="img" align="middle"  src="good.png"/>
+  <img id ="img" align="top"  src="ok.png"  />
+ <img id ="img" align="top"   src="bad.png"/>
+
+ <script>
+$('#img').on({
+    'click': function () {
+        var origsrc = $(this).attr('src');
+        var src = '';
+        if (origsrc == 'good.png') src = 'img2_on.png';
+        if (origsrc == 'img2_on.png') src = 'img3_on.png';
+        if (origsrc == 'img3_on.png') src = 'img1_on.png';
+        $(this).attr('src', src);
+    }
+});
+
+</script>
 <input type="button" value="Send" onClick="passToJava()" />
 </div>
 
