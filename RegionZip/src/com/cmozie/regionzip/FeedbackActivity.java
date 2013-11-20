@@ -1,3 +1,12 @@
+/*
+ * project 			RegionZip
+ * 
+ * package			com.cmozie.regionzip
+ * 
+ * name				cameronmozie
+ * 
+ * date				Nov 20, 2013
+ */
 package com.cmozie.regionzip;
 
 import android.annotation.SuppressLint;
@@ -15,24 +24,43 @@ import android.webkit.WebView;
 import android.widget.Toast;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FeedbackActivity.
+ */
 @SuppressLint("SetJavaScriptEnabled")
-public class Feedback extends Activity {
+public class FeedbackActivity extends Activity {
 	public static WebView theWebView;
 	
 	//javascript interface
-public class JavaScriptInterface {
+/**
+	 * The Class JavaScriptInterface.
+	 */
+	public class JavaScriptInterface {
 		
 	    Context context;
 	   
 	
-	    JavaScriptInterface(Context c) {
+	    /**
+    	 * Instantiates a new java script interface.
+    	 *
+    	 * @param c the c
+    	 */
+    	JavaScriptInterface(Context c) {
 	        context = c;
 	       Log.i("Test", "Test1");
 	    
 	    }
 	    
 	    
-	    @JavascriptInterface
+	    /**
+    	 * Gets the jS text.
+    	 *
+    	 * @param textValue the text value
+    	 * @param rateValue the rate value
+    	 * @return the jS text
+    	 */
+    	@JavascriptInterface
 	    public void getJSText(String textValue, String rateValue) {
 	    	//toast for sending feedback
 	        Toast.makeText(context, "Thanks for your Feedback!", Toast.LENGTH_SHORT).show();
@@ -51,6 +79,9 @@ public class JavaScriptInterface {
 	  
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -76,6 +107,9 @@ public class JavaScriptInterface {
 	    
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item){
 		switch (item.getItemId()) {
@@ -86,11 +120,11 @@ public class JavaScriptInterface {
 			  startActivity(homeIntent);
 			break;
 		case R.id.sendFeedback:
-			Intent feedBackIntent = new Intent(this, Feedback.class);
+			Intent feedBackIntent = new Intent(this, FeedbackActivity.class);
 			  startActivity(feedBackIntent);
 			  break;
 		case R.id.aboutPage:
-			Intent aboutIntent = new Intent(this, About.class);
+			Intent aboutIntent = new Intent(this, AboutActivity.class);
 			  startActivity(aboutIntent);		
 		break;
 		default:
@@ -99,6 +133,10 @@ public class JavaScriptInterface {
 		return super.onOptionsItemSelected(item);
 		
 	}
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

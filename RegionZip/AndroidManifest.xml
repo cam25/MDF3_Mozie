@@ -52,7 +52,7 @@
             
         </activity>
         <activity
-            android:name=".Feedback"
+            android:name=".FeedbackActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Holo">
             <meta-data
@@ -61,7 +61,7 @@
             </activity>
             
         <activity
-            android:name=".About"
+            android:name=".AboutActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Holo">
             <meta-data
@@ -69,7 +69,7 @@
             android:value="com.cmozie.regionzip.MainActivity" />
             </activity>
             
-        <receiver android:name="com.cmozie.classes.RegionWidget"
+        <receiver android:name="com.cmozie.classes.WidgetProvider"
             	android:label="@string/app_name">
             <intent-filter >
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>

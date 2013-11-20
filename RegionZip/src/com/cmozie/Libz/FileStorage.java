@@ -1,11 +1,11 @@
 /*
- * project 			Java2Week2
+ * project 			RegionZip
  * 
  * package			com.cmozie.Libz
  * 
  * name				cameronmozie
  * 
- * date				Oct 10, 2013
+ * date				Nov 20, 2013
  */
 
 package com.cmozie.Libz;
@@ -27,7 +27,7 @@ import android.widget.Toast;
 /**
  * The Class FileStuff.
  */
-public class FileStuff {
+public class FileStorage {
 
 	/**
 	 * Store string file.
@@ -39,13 +39,13 @@ public class FileStuff {
 	 * @return the boolean
 	 */
 	
-	private static FileStuff m_instance;
+	private static FileStorage m_instance;
 	
 	//constructor
 	/**
 	 * Instantiates a new file stuff.
 	 */
-	private FileStuff(){
+	private FileStorage(){
 		
 		
 	}
@@ -55,9 +55,9 @@ public class FileStuff {
 	 *
 	 * @return single instance of FileStuff
 	 */
-	public static FileStuff getInstance(){
+	public static FileStorage getInstance(){
 		if (m_instance == null) {
-			m_instance = new FileStuff();
+			m_instance = new FileStorage();
 			
 		}
 		return m_instance;

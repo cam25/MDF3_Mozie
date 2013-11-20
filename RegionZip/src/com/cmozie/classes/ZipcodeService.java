@@ -5,7 +5,7 @@
  * 
  * name				cameronmozie
  * 
- * date				Nov 14, 2013
+ * date				Nov 20, 2013
  */
 
 package com.cmozie.classes;
@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import webConnections.WebStuff;
 
-import com.cmozie.Libz.FileStuff;
+import com.cmozie.Libz.FileStorage;
 
 import android.app.Activity;
 import android.app.IntentService;
@@ -88,7 +88,7 @@ public class ZipcodeService extends IntentService {
 					
 					queryReply = WebStuff.getURLStringResponse(UrlResult);
 					//storing of the file to local storage
-					FileStuff.storeStringFile(this, "temp", queryReply, false);
+					FileStorage.storeStringFile(this, "temp", queryReply, false);
 					//FileStuff.storeStringFile(this, "temp2", queryReply2, false);
 					Log.i("STORED FILE", "saved");
 				}catch (MalformedURLException e){

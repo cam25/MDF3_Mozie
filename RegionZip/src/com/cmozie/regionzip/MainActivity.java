@@ -5,8 +5,9 @@
  * 
  * name				cameronmozie
  * 
- * date				Nov 14, 2013
+ * date				Nov 20, 2013
  */
+
 package com.cmozie.regionzip;
 
 
@@ -47,7 +48,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.TextView;
-import com.cmozie.Libz.FileStuff;
+import com.cmozie.Libz.FileStorage;
 import com.cmozie.classes.*;
 import webConnections.*;
 
@@ -195,7 +196,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 			 				
 			 					
 			 					try{
-			 						JSONObject json = new JSONObject(FileStuff.readStringFile(_context, "temp", false));
+			 						JSONObject json = new JSONObject(FileStorage.readStringFile(_context, "temp", false));
 			 						
 			 						JSONArray ja = json.getJSONArray("zips");
 			 						
@@ -494,7 +495,7 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		
 		
 		try{
-		JSONObject json = new JSONObject(FileStuff.readStringFile(_context, "temp", false));
+		JSONObject json = new JSONObject(FileStorage.readStringFile(_context, "temp", false));
 		JSONArray ja = json.getJSONArray("zips");
 		
 		
@@ -722,12 +723,12 @@ public class MainActivity extends Activity implements SearchView.OnQueryTextList
 		switch (item.getItemId()) {
 	
 		case R.id.aboutPage:
-			Intent aboutIntent = new Intent(this, About.class);
+			Intent aboutIntent = new Intent(this, AboutActivity.class);
 			  startActivity(aboutIntent);
 			
 		break;
 		case R.id.sendFeedback:
-			Intent feedBackIntent = new Intent(this, Feedback.class);
+			Intent feedBackIntent = new Intent(this, FeedbackActivity.class);
 			  startActivity(feedBackIntent);
 			  break;
 		default:

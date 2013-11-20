@@ -5,7 +5,7 @@
  * 
  * name				cameronmozie
  * 
- * date				Nov 14, 2013
+ * date				Nov 20, 2013
  */
 package com.cmozie.regionzip;
 
@@ -21,7 +21,7 @@ import android.widget.TextView;
 /**
  * The Class About.
  */
-public class About extends Activity {
+public class AboutActivity extends Activity {
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -55,7 +55,7 @@ public class About extends Activity {
 
 			break;
 		case R.id.sendFeedback:
-			Intent feedBackIntent = new Intent(this, Feedback.class);
+			Intent feedBackIntent = new Intent(this, FeedbackActivity.class);
 			  startActivity(feedBackIntent);
 			  break;
 		default:

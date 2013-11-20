@@ -5,7 +5,7 @@
  * 
  * name				cameronmozie
  * 
- * date				Nov 14, 2013
+ * date				Nov 20, 2013
  */
 
 package com.cmozie.classes;
@@ -14,7 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.cmozie.Libz.FileStuff;
+import com.cmozie.Libz.FileStorage;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
@@ -153,7 +153,7 @@ public class ZipcodeContentProvider extends ContentProvider {
 		
 		MatrixCursor result = new MatrixCursor (RegionData.PROJECTION);
 		
-		String JSONString = FileStuff.readStringFile(getContext(),"temp", false);
+		String JSONString = FileStorage.readStringFile(getContext(),"temp", false);
 		//Log.i("Content STRING", JSONString);
 		//Log.i("Content STRING", JSONString2);
 		JSONObject json;

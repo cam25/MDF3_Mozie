@@ -1,3 +1,12 @@
+/*
+ * project 			RegionZip
+ * 
+ * package			com.cmozie.classes
+ * 
+ * name				cameronmozie
+ * 
+ * date				Nov 20, 2013
+ */
 package com.cmozie.classes;
 
 import com.cmozie.regionzip.R;
@@ -9,8 +18,16 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-public class RegionWidget extends AppWidgetProvider {
+// TODO: Auto-generated Javadoc
+/**
+ * The Class WidgetProvider.
+ */
+public class WidgetProvider extends AppWidgetProvider {
 	public String returnedZip = "\n was the last \nselected Region";
+
+/* (non-Javadoc)
+ * @see android.appwidget.AppWidgetProvider#onReceive(android.content.Context, android.content.Intent)
+ */
 @Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
@@ -19,6 +36,9 @@ public class RegionWidget extends AppWidgetProvider {
 
 Context context;
 
+	/* (non-Javadoc)
+	 * @see android.appwidget.AppWidgetProvider#onDeleted(android.content.Context, int[])
+	 */
 	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
 		// TODO Auto-generated method stub
@@ -27,6 +47,9 @@ Context context;
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see android.appwidget.AppWidgetProvider#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])
+	 */
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds) {

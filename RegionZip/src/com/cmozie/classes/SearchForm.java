@@ -5,8 +5,9 @@
  * 
  * name				cameronmozie
  * 
- * date				Nov 14, 2013
+ * date				Nov 20, 2013
  */
+
 
 package com.cmozie.classes;
 
@@ -26,8 +27,8 @@ import android.widget.LinearLayout;
 @SuppressLint("ViewConstructor")
 public class SearchForm extends LinearLayout {
 	
-	EditText _searchField;
-	Button _searchButton;
+	EditText searchField;
+	Button searchButn;
 	
 	
 	/**
@@ -42,20 +43,20 @@ public class SearchForm extends LinearLayout {
 		//allows to import the value
 		super(context);
 		
-		_searchField = new EditText(context);
+		searchField = new EditText(context);
 		
 		LayoutParams lp;
 		
 		lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
 		
-		_searchField.setLayoutParams(lp);
-		_searchField.setHint(hint);
+		searchField.setLayoutParams(lp);
+		searchField.setHint(hint);
 		
-		_searchButton = new Button(context);
-		_searchButton.setText(buttonText);
+		searchButn = new Button(context);
+		searchButn.setText(buttonText);
 		
-		this.addView(_searchField);
-		this.addView(_searchButton);
+		this.addView(searchField);
+		this.addView(searchButn);
 		
 		lp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
 		this.setLayoutParams(lp);
@@ -69,7 +70,7 @@ public class SearchForm extends LinearLayout {
 	 */
 	public EditText getField(){
 		
-		return _searchField;
+		return searchField;
 	}
 
 	/**
@@ -79,6 +80,6 @@ public class SearchForm extends LinearLayout {
 	 */
 	public Button getButton(){
 		
-		return _searchButton;
+		return searchButn;
 	}
 }
