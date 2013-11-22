@@ -17,9 +17,11 @@
         android:icon="@drawable/zipcodebanner"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
         <activity
             android:name="com.cmozie.regionzip.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,7 +47,8 @@
         <activity
             android:name=".InfoActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo">
+            android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|screenSize">
             <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.cmozie.regionzip.MainActivity" />
@@ -54,7 +57,8 @@
         <activity
             android:name=".FeedbackActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo">
+            android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|screenSize">
             <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.cmozie.regionzip.MainActivity" />
@@ -63,7 +67,8 @@
         <activity
             android:name=".AboutActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo">
+            android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|screenSize">
             <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.cmozie.regionzip.MainActivity" />
@@ -81,7 +86,8 @@
         </receiver>
          <activity
             android:name="com.cmozie.classes.WidgetSettings"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
 
